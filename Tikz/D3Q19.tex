@@ -1,0 +1,80 @@
+\begin{figure}[ht]
+\centering
+\tdplotsetmaincoords{75}{120} % adjust viewing angle
+\begin{tikzpicture}[scale=2, >=Stealth, tdplot_main_coords]
+%
+% ---- 1. Draw the grid (edges of the 2×2×2 cube subdivided) ----
+\tikzset{grid line/.style={gray, very thin, densely dotted}}
+%
+% Lines parallel to x‑axis
+\foreach \y in {-1,0,1}
+{
+    \foreach \z in {-1,0,1}
+    {
+        \foreach \xstart in {-1,0}
+        {
+            \draw[grid line] (\xstart,\y,\z) -- (\xstart+1,\y,\z);
+        }
+    }
+}
+%
+% Lines parallel to y‑axis
+\foreach \x in {-1,0,1}
+{
+    \foreach \z in {-1,0,1}
+    {
+        \foreach \ystart in {-1,0}
+        {
+            \draw[grid line] (\x,\ystart,\z) -- (\x,\ystart+1,\z);
+        }
+    }
+}
+%
+% Lines parallel to z‑axis
+\foreach \x in {-1,0,1}
+{
+    \foreach \y in {-1,0,1}
+    {
+        \foreach \zstart in {-1,0}
+        {
+            \draw[grid line] (\x,\y,\zstart) -- (\x,\y,\zstart+1);
+        }
+    }
+}
+%
+%
+% ---- Coordinate system (placed at a corner for clarity) ----
+%
+\begin{scope}[thick, ->, >=Stealth]
+  \draw (1.2,-1.2,-1.2) -- ++(0.8,0,0) node[above] {$z$};
+  \draw (1.2,-1.2,-1.2) -- ++(0,0.8,0) node[above] {$x$};
+  \draw (1.2,-1.2,-1.2) -- ++(0,0,0.8) node[left] {$y$};
+\end{scope}
+%
+% ---- Draw population lines from centre to every other lattice point ----
+%
+\draw[->] (0,0,0) -- (1,0,0);
+\draw[->] (0,0,0) -- (-1,0,0);
+\draw[->] (0,0,0) -- (0,1,0);
+\draw[->] (0,0,0) -- (0,-1,0);
+\draw[->] (0,0,0) -- (0,0,1);
+\draw[->] (0,0,0) -- (0,0,-1);
+\draw[->] (0,0,0) -- (1,1,0);
+\draw[->] (0,0,0) -- (1,-1,0);
+\draw[->] (0,0,0) -- (-1,1,0);
+\draw[->] (0,0,0) -- (-1,-1,0);
+\draw[->] (0,0,0) -- (1,0,1);
+\draw[->] (0,0,0) -- (1,0,-1);
+\draw[->] (0,0,0) -- (-1,0,1);
+\draw[->] (0,0,0) -- (-1,0,-1);
+\draw[->] (0,0,0) -- (0,1,1);
+\draw[->] (0,0,0) -- (0,1,-1);
+\draw[->] (0,0,0) -- (0,-1,1);
+\draw[->] (0,0,0) -- (0,-1,-1);
+%
+\node[circle, fill=black, inner sep=2pt] at (0,0,0) {};
+%
+\end{tikzpicture}
+\caption{The $\mathrm{D}3\mathrm{Q}19$ velocity set. Tikz source code: Tikz/D3Q19.tex}
+\label{fig:D3Q19}
+\end{figure}
