@@ -6,6 +6,7 @@
 % --- Parameters ---
 % ---------------------------------------------------------------------
 \def\L{4}     % Characteristic length of the cavity
+\coordinate (C) at (0.5*\L,0.5*\L,1*\L);
 % ---------------------------------------------------------------------
 % --- Coordinates ---
 % ---------------------------------------------------------------------
@@ -56,9 +57,9 @@
 % --- Coordinate Axes ---
 % ---------------------------------------------------------------------
 %
-\draw[->] (O) -- (0.25*\L,0,0) node[above] {$x$};
-\draw[->] (O) -- (0,0.25*\L,0) node[left] {$y$};
-\draw[->] (O) -- (0,0,0.25*\L) node[above left] {$z$};
+\draw[->] (C) -- ++(0.25*\L,0,0) node[above] {$x$};
+\draw[->] (C) -- ++(0,0.25*\L,0) node[left] {$y$};
+\draw[->] (C) -- ++(0,0,0.25*\L) node[above left] {$z$};
 %
 % ---------------------------------------------------------------------
 % --- Labels & Dimension Lines ---
@@ -77,5 +78,6 @@
 \draw[->, thick] (0.25*\L, \L, 0.5*\L) -- (0.75*\L, \L, 0.5*\L) node[midway, above] {$u_{\infty}$};
 %
 \end{tikzpicture}
-\caption{Lid‑driven cavity geometry. The top wall moves with velocity $\boldsymbol{u} = \left(u_{\infty},\,0,\,0\right)$; all other walls are stationary no‑slip boundaries. Source code: Tikz/cavityDiagram.tex}\label{fig:cavityDiagram}
+\caption{Lid‑driven cavity geometry. The top wall moves with velocity $\boldsymbol{u} = \left(u_{\infty},\,0,\,0\right)$; all other walls are stationary no‑slip boundaries. Source code: Tikz/cavityDiagram.tex}
+\label{fig:lidDrivenCavityConfiguration}
 \end{figure}
