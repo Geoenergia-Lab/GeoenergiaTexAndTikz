@@ -1,0 +1,94 @@
+\begin{figure}[hbt!]
+\centering
+\begin{tikzpicture}[scale=1,x=28pt, y=28pt, >=Stealth]
+
+    % Define colors to match the image
+    \colorlet{colGray}{ApplePalette6!50}
+    \colorlet{colOrange}{ApplePalette4!50}
+    \colorlet{colBlue}{ApplePalette2!50}
+    \colorlet{colGreen}{ApplePalette1!50}
+
+    % ==========================================
+    % Left Block (Block 3)
+    % ==========================================
+    \begin{scope}[xshift=0pt]
+        % 1. Fill Corner Halos
+        \fill[colGreen]  (0,0) rectangle (1,1);
+        \fill[colGreen]  (4,0) rectangle (5,1);
+        \fill[colGreen]  (0,4) rectangle (1,5);
+        \fill[colGreen]  (4,4) rectangle (5,5);
+        
+        % 2. Fill Top / Bottom Halos
+        \fill[colBlue]   (1,0) rectangle (4,1);
+        \fill[colBlue]   (1,4) rectangle (4,5);
+        
+        % 3. Fill Left / Right Halos
+        \fill[colOrange] (0,1) rectangle (1,4);
+        \fill[colOrange] (4,1) rectangle (5,4);
+        
+        % 4. Fill Inner Domain
+        \fill[colGray]   (1,1) rectangle (4,4);
+        
+        % 5. Draw Grid and Borders
+        \draw[step=28pt, densely dashed, semithick] (0,0) grid (5,5);
+        \draw[thick] (1,1) rectangle (4,4); % Solid inner border
+        
+        % 6. Center Label
+        \node at (2.5, 2.5) {\Large $p_{1}$};
+    \end{scope}
+
+    % ==========================================
+    % Right Block (Block 4)
+    % ==========================================
+    \begin{scope}[xshift=224pt] % Spaced 224 pts apart from the first block
+        % 1. Fill Corner Halos
+        \fill[colBlue]   (0,0) rectangle (1,1);
+        \fill[colBlue]   (4,0) rectangle (5,1);
+        \fill[colBlue]   (0,4) rectangle (1,5);
+        \fill[colBlue]   (4,4) rectangle (5,5);
+        
+        % 2. Fill Top / Bottom Halos
+        \fill[colGreen]  (1,0) rectangle (4,1);
+        \fill[colGreen]  (1,4) rectangle (4,5);
+        
+        % 3. Fill Left / Right Halos
+        \fill[colGray]   (0,1) rectangle (1,4);
+        \fill[colGray]   (4,1) rectangle (5,4);
+        
+        % 4. Fill Inner Domain
+        \fill[colOrange] (1,1) rectangle (4,4);
+        
+        % 5. Draw Grid and Borders
+        \draw[step=28pt, densely dashed, semithick] (0,0) grid (5,5);
+        \draw[thick] (1,1) rectangle (4,4); % Solid inner border
+        
+        % 6. Center Label
+        \node at (2.5, 2.5) {\Large $p_{2}$};
+    \end{scope}
+
+    % ==========================================
+    % Arrows for Ghost/Halo Cell Exchange
+    % ==========================================
+    
+    % Arrow 1: From Block 3 (inner right) to Block 4 (left halo)
+    \draw[->, thick] (3.5, 3.5) to[out=15, in=165] (8.5, 3.5);
+    % Manually place c_x at the approximate midpoint (straight-line midpoint + upward offset)
+    \node at (6, 4.25) [fill=white, anchor=center, inner sep=1pt] {$c_{\alpha} = + 1$};
+
+    % Arrow 2: From Block 4 (inner left) to Block 3 (right halo)
+    \draw[->, thick] (9.5, 1.5) to[out=195, in=-15] (4.5, 1.5);
+    % Manually place c_x at the approximate midpoint (straight-line midpoint + downward offset)
+    \node at (7, 0.75) [fill=white, anchor=center, inner sep=1pt] {$c_{\alpha} = - 1$};
+
+    % ==========================================
+    % Axis Indicators (i, j)
+    % ==========================================
+    \begin{scope}[xshift=168pt, yshift=56pt]
+        \draw[->, thick] (0,0) -- (1,0) node[anchor=west] {$\alpha$};
+        \draw[->, thick] (0,0) -- (0,1) node[anchor=south] {$\beta$};
+    \end{scope}
+
+\end{tikzpicture}
+\caption{Halo exchange between two GPU subdomains. Colours represent different halo regions and the inner domain. Arrows indicate data exchange between corresponding halo layers. Tikz source code: Tikz/haloExchangeDiagram.tex}
+\label{fig:haloExchange}
+\end{figure}

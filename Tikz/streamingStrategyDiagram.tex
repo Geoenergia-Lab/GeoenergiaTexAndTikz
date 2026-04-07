@@ -1,0 +1,43 @@
+\tikzset
+{
+  d3q27/line/.style={-{Stealth[length=4pt]}, thick, black!25},
+  d3q27out/line/.style={-{Stealth[length=4pt]}, thick, black},
+  bgarrow/.style={d3q27/line, lightgray, {Stealth[length=4pt]}-{Stealth[length=4pt]}, shorten >=1.5pt, shorten <=1.5pt},
+  fgarrow/.style={d3q27out/line, shorten >=1.5pt},
+  bgdoublearrow/.style={d3q27/line, lightgray, {Stealth[length=4pt]}-{Stealth[length=4pt]}, shorten >=1.5pt, shorten <=1.5pt},
+  fgdoublearrow/.style={d3q27out/line, {Stealth[length=4pt]}-{Stealth[length=4pt]}, shorten >=1.5pt, shorten <=1.5pt}
+}
+\begin{figure}[hbt!]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \begin{minipage}{0.49\linewidth}
+            \centering
+            \input{Tikz/pullStreamingRead}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.48\linewidth}
+            \centering
+            \input{Tikz/pullStreamingWrite}
+        \end{minipage}
+        \caption{Pull streaming: each thread reads populations from neighbouring nodes (incoming arrows) and writes the collided result to its own node. Reads are non-coalesced but writes are coalesced}
+        \label{fig:pull_streaming}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \begin{minipage}{0.49\linewidth}
+            \centering
+            \input{Tikz/pushStreamingRead}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.48\linewidth}
+            \centering
+            \input{Tikz/pushStreamingWrite}
+        \end{minipage}
+        \caption{Push streaming: each thread reads populations from its own node and writes them to neighbouring nodes. Reads are coalesced but writes are non-coalesced.}
+        \label{fig:push_streaming}
+    \end{subfigure}
+    \caption{Comparison of pull and push streaming patterns for the lattice Boltzmann method. Black arrows indicate the direction of data transfer during the streaming step. Tikz source code: Tikz/streamingStrategyDiagram.tex}
+    \label{fig:StreamingStrategies}
+\end{figure}

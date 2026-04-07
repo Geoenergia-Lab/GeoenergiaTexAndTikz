@@ -1,0 +1,38 @@
+\begin{figure}[hbt!]
+\centering
+\begin{tikzpicture}[trim axis left, trim axis right]
+\begin{axis}[
+    % Set width to less than text width for equal margins
+    width = 0.8\textwidth,
+    height = 0.4\textwidth,
+    scale only axis,
+    domain = -1:1,
+    xmin = -1,
+    xmax = 1,
+    ymin = -0.5,
+    ymax = 0.5,
+    xtick = {-1, -0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75, 1},
+    xticklabels = {-1, -0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75, 1},
+    ytick = {-0.5, -0.25, 0, 0.25, 0.5},
+    yticklabels = {-0.5, -0.25, 0, 0.25, 0.5},
+    axis lines = box,
+    axis line style = {-},
+    xlabel = {$x$},
+    ylabel = {$\bar{v}$},
+    xlabel style = {font=\normalsize, below},
+    ylabel style = {font=\normalsize, above, rotate=0},
+    tick label style = {font=\normalsize},
+    grid = major,
+    grid style = {dashed, gray!30},
+    samples = 1000,
+    smooth,
+    no marks,
+    legend pos = north east
+]
+\addplot [black] table [x=x, y=y, col sep=comma] {Data/uy_cx_10000_05.csv};
+\addlegendentry{(Prasad \& Koseff)}
+\end{axis}
+\end{tikzpicture}
+\caption{Time-averaged $y$-component velocity $\bar{v}$ along the centreline ($y=0$, $z=0$). Tikz source code: Tikz/uyCentrelinePlot.tex}
+\label{fig:uy_cx_centreline}
+\end{figure}%

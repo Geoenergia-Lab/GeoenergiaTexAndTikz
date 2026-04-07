@@ -1,0 +1,53 @@
+\documentclass{article}
+\input{style/packages}
+\input{style/style}
+%
+\newcommand{\Reynolds}{10000}
+\newcommand{\nx}{512}
+\newcommand{\ny}{512}
+\newcommand{\nz}{512}
+\newcommand{\uInf}{0.0512}
+\newcommand{\asSq}{a_{s}^{2}}
+\newcommand{\asFour}{a_{s}^{4}}
+\newcommand{\csSq}{c_{s}^{2}}
+%
+%--------------------------------------------------------------
+% Título e cabeçalho / title
+\definetitle{GeoenergiaTexAndTikz}
+\author{Author Name}
+\author{Second Author Name}
+\affil{\small{Department of Petroleum Engineering, Santa Catarina State University, Balne\'{a}rio Cambori\'{u}, Brazil\\}}
+\date{\small{\href{https://www.udesc.br/cesfi/geoenergia}{Geoenergia Lab}, \today.}}
+%
+%--------------------------------------------------------------
+\begin{document}
+%
+\maketitle
+%
+\hrule
+\begin{abstract}
+%
+\par This Overleaf project contains the \LaTeX and Tikz source code to output some plots, figures and diagrams commonly used by members of the lab. The Tikz source code for the figures is contained in the Tikz folder.
+%
+\par Contained also in this document is a Bibtex file containing references and citations~\cite{hegele2018high} commonly used by members of the lab.
+% 
+\par \textit{Keywords}: Geoenergy, Petroleum Engineering, Lattice Boltzmann Method.
+\end{abstract}
+\smallskip
+\hrule
+%
+%----------------------------------------------------------------
+%
+\input{Figures}
+%
+%--------------------------------------------------------------
+%
+% REFERENCIAS
+% caso queira de acordo com ABNT deixe comentado a biblioteca estrangeira e tammbém o pacote. para citação use \citeoline{}
+%
+\clearpage
+%\bibliographystyle{abntex2-alf} % Estilo ABNT alfabético
+\bibliographystyle{ieeetr} % Estilo estrangeiro 
+\bibliography{References} % Nome do arquivo .bib onde estão suas referências
+%
+\end{document}
