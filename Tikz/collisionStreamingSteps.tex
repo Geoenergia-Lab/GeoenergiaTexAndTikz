@@ -1,6 +1,20 @@
-\begin{figure}[ht]
-\centering
-\begin{tikzpicture}[scale=0.6, >=Stealth]
+\documentclass[tikz]{standalone}
+\usepackage[portuguese,english]{babel}
+%
+% Useful packages
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\usepackage{tikz}
+%\usepackage{tikz-3dplot}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta}
+%
+\setlength{\parskip}{3.6pt}
+\definecolor{cor1}{RGB}{255, 87, 87}
+\begin{document}
+\begin{tikzpicture}[scale=0.5, >=Stealth]
+\useasboundingbox (-13, -4.5) rectangle (13, 4.5);
 %
 \node[align=center] at (-10,4) {Pre-collision\\$f_{i}\left(\boldsymbol{x},\,t\right)$};
 \node[align=center] at (0,4) {Post-collision\\$f^{*}_{i}\left(\boldsymbol{x},\,t\right)$};
@@ -66,5 +80,4 @@
 \draw[->] (10.5,0.5) -- (11,1);
 %
 \end{tikzpicture}
-\caption{Schematic representation of the LBM collision and streaming processes using the two-dimensional D2Q9 velocity set.}\label{fig:collisionStreamingSteps}
-\end{figure}
+\end{document}
