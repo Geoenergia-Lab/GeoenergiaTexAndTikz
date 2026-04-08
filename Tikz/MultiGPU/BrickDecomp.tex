@@ -1,0 +1,34 @@
+\documentclass[tikz,border=5pt]{standalone}
+\usepackage[portuguese,english]{babel}
+\definecolor{ApplePalette1}{RGB}{97, 187, 70}
+\definecolor{ApplePalette2}{RGB}{253, 184, 39}
+\definecolor{ApplePalette3}{RGB}{245, 130, 31}
+\definecolor{ApplePalette4}{RGB}{224, 58, 62}
+\definecolor{ApplePalette5}{RGB}{150, 61, 151}
+\definecolor{ApplePalette6}{RGB}{0, 157, 220}
+\definecolor{ApplePalette7}{RGB}{255, 105, 180}
+\definecolor{ApplePalette8}{RGB}{107, 194, 213}
+% Useful packages
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta}
+%
+\begin{document}
+\begin{tikzpicture}[scale=0.7]
+    \draw[black, thick, fill=ApplePalette1!50] (0,0,4) -- (2,0,4) -- (2,2,4) -- (0,2,4) -- cycle; % front
+    \draw[black, thick, fill=ApplePalette2!50] (2,0,4) -- (4,0,4) -- (4,2,4) -- (2,2,4) -- cycle; % front
+    \draw[black, thick, fill=ApplePalette4!50] (0,2,4) -- (2,2,4) -- (2,4,4) -- (0,4,4) -- cycle; % front
+    \draw[black, thick, fill=ApplePalette6!50] (2,2,4) -- (4,2,4) -- (4,4,4) -- (2,4,4) -- cycle; % front
+    \draw[black, thick, fill=ApplePalette4!50] (0,4,2) -- (2,4,2) -- (2,4,4) -- (0,4,4) -- cycle; % top
+    \draw[black, thick, fill=ApplePalette6!50] (2,4,2) -- (4,4,2) -- (4,4,4) -- (2,4,4) -- cycle; % top
+    \draw[black, thick, fill=ApplePalette6!50] (4,2,2) -- (4,4,2) -- (4,4,4) -- (4,2,4) -- cycle; % right
+    \draw[black, thick, fill=ApplePalette2!50] (4,0,2) -- (4,2,2) -- (4,2,4) -- (4,0,4) -- cycle; % right
+    \draw[black, thick, fill=ApplePalette5!50] (0,4,0) -- (2,4,0) -- (2,4,2) -- (0,4,2) -- cycle; % top
+    \draw[black, thick, fill=ApplePalette3!50] (2,4,0) -- (4,4,0) -- (4,4,2) -- (2,4,2) -- cycle; % top
+    \draw[black, thick, fill=ApplePalette3!50] (4,2,0) -- (4,4,0) -- (4,4,2) -- (4,2,2) -- cycle; % right
+    \draw[black, thick, fill=ApplePalette7!50] (4,0,0) -- (4,2,0) -- (4,2,2) -- (4,0,2) -- cycle; % right
+\end{tikzpicture}
+\end{document}

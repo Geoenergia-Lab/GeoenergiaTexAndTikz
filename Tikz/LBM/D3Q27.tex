@@ -9,9 +9,6 @@
 \usepackage{tikz-3dplot}
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{arrows.meta}
-%
-\setlength{\parskip}{3.6pt}
-\definecolor{cor1}{RGB}{255, 87, 87}
 \begin{document}
 \tdplotsetmaincoords{75}{120} % adjust viewing angle
 \begin{tikzpicture}[scale=2, >=Stealth, tdplot_main_coords]
@@ -84,6 +81,14 @@
 \draw[->] (0,0,0) -- (0,1,-1);
 \draw[->] (0,0,0) -- (0,-1,1);
 \draw[->] (0,0,0) -- (0,-1,-1);
+\draw[->] (0,0,0) -- (1,1,1);
+\draw[->] (0,0,0) -- (1,1,-1);
+\draw[->] (0,0,0) -- (1,-1,1);
+\draw[->] (0,0,0) -- (1,-1,-1);
+\draw[->] (0,0,0) -- (-1,1,1);
+\draw[->] (0,0,0) -- (-1,1,-1);
+\draw[->] (0,0,0) -- (-1,-1,1);
+\draw[->] (0,0,0) -- (-1,-1,-1);
 %
 \node[circle, fill=black, inner sep=2pt] at (0,0,0) {};
 %

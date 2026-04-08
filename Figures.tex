@@ -1,93 +1,9 @@
-\section{Figures}
-%
-% \clearpage
-\subsection{General lattice Boltzmann}
-%
-\begin{figure}[hbt]
-    \centering
-    \input{Tikz/collisionStreamingSteps}
-    \caption{Schematic representation of the LBM collision and streaming processes using the two-dimensional D2Q9 velocity set. TikZ source code: Tikz/collisionStreamingSteps.tex}
-    \label{fig:collisionStreamingSteps}
-\end{figure}
-%
-\begin{figure}%[hbt!]
-\centering
-\begin{subfigure}{0.5\textwidth}%[hbt!]
-    \centering
-    \input{Tikz/D3Q27}
-    \caption{The D3Q27 velocity set.}
-    \label{fig:D3Q27}
-\end{subfigure}%
-\begin{subfigure}{0.5\textwidth}%[hbt!]
-    \centering
-    \input{Tikz/D3Q19}
-    \caption{The D3Q19 velocity set.}
-    \label{fig:D3Q19}
-\end{subfigure}
-\caption{Comparison of D3Q19 and D3Q27 velocity sets. TikZ source code: Tikz/D3Q19.tex, Tikz/D3Q27.tex}
-\label{fig:VelocitySetComparison}
-\end{figure}
-%
-\begin{figure}%[hbt!]
-\centering
-\begin{subfigure}{0.5\textwidth}%[hbt!]
-    \centering
-    \input{Tikz/D2Q9}
-    \caption{The D2Q9 velocity set.}
-    \label{fig:D2Q9}
-\end{subfigure}%
-\begin{subfigure}{0.5\textwidth}%[hbt!]
-    \centering
-    \input{Tikz/D2Q5}
-    \caption{The D2Q5 velocity set.}
-    \label{fig:D2Q5}
-\end{subfigure}
-\caption{Comparison of D2Q9 and D2Q5 velocity sets. TikZ source code: Tikz/D2Q9.tex, Tikz/D2Q5.tex}
-\label{fig:VelocitySetComparison2D}
-\end{figure}
-%
-%\input{Tikz/D2Q9}
-%\input{Tikz/D2Q5}
-\input{Tikz/streamingStrategyDiagram}
-%
 \clearpage
-\subsection{Lid driven cavity}
-%
-\input{Tikz/cavityDiagram}
-\input{Tikz/uyCentrelinePlot}
+\subsection{Test}
 %
 \begin{figure}[hbt!]
-\centering
-\begin{subfigure}{0.45\textwidth}
     \centering
-    \input{Tikz/cavityVelocityProfiles}
-    \caption{D3Q19.}
-    \label{subfig:D3Q19_Re_10000}
-\end{subfigure}
-\hfill
-\begin{subfigure}{0.45\textwidth}
-    \centering
-    \input{Tikz/cavityVelocityProfiles}
-    \caption{D3Q27.}
-    \label{subfig:D3Q27_Re_10000}
-\end{subfigure}
-\caption{Mean velocity profiles $\left<u_{y}\right>$ and $\left<u_y\right>$ along the centerlines of the cavity for D3Q19 and D3Q27 stencils at Reynolds numbers $Re = \num{10000}$. TikZ source code: Tikz/cavityVelocityProfiles.tex}
-\label{fig:cavityVelocityProfilesCentreline}
+    \input{Tikz/Oil/DropletSizeDistribution}
+    \caption{Volume droplet size distributions for an arbitrary set of oils. TikZ source code: TikZ/Oil/DropletSizeDistribution.tex}
+    \label{fig:DropletSizeDistribution}
 \end{figure}%
-%
-%\input{Tikz/cavityVelocityProfilesCentrelines}
-%
-\clearpage
-\subsection{Multi GPU}
-%
-\input{Tikz/decompStrategies}
-\input{Tikz/domainDecompDiagram}
-%
-%\input{Tikz/haloExchangeDiagram}
-%
-\begin{figure}[hbt!]
-    \centering
-    \input{Tikz/haloExchangeDiagram}
-    \caption{Halo exchange between two GPU subdomains. Colours represent different halo regions and the inner domain. Arrows indicate data exchange between corresponding halo layers. Tikz source code: Tikz/haloExchangeDiagram.tex}
-    \label{fig:haloExchange}
-\end{figure}

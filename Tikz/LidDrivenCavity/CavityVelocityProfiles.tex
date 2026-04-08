@@ -8,16 +8,11 @@
 \usepackage{tikz}
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{arrows.meta}
-%
-\setlength{\parskip}{3.6pt}
-\definecolor{cor1}{RGB}{255, 87, 87}
 \begin{document}
-\begin{tikzpicture}[trim axis left, trim axis right]
+\begin{tikzpicture}[scale=1]
 \begin{axis}[
-    % Set width to less than text width for equal margins
-    width = 0.9\textwidth,
-    height = 0.9\textwidth,
-    scale only axis,
+    width = \textwidth,
+    height = \textwidth,
     domain = -1:1,
     xmin = -1,
     xmax = 1,

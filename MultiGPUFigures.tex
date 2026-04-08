@@ -1,0 +1,40 @@
+\clearpage
+\subsection{Multi GPU}
+%
+\begin{figure}[hbt]
+    \centering
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \input{Tikz/MultiGPU/SlabDecomp}
+        \caption{Slab decomposition.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \input{Tikz/MultiGPU/PencilDecomp}
+        \caption{Pencil decomposition.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.32\textwidth}
+        \centering
+        \input{Tikz/MultiGPU/BrickDecomp}
+        \caption{Brick decomposition.}
+    \end{subfigure}
+    \caption{Domain decomposition strategies for parallel computation. Separate colours refer to separate device partitions. Tikz source code: Tikz/MultiGPU/SlabDecomp.tex, Tikz/MultiGPU/PencilDecomp.tex, Tikz/MultiGPU/BrickDecomp.tex}
+    \label{fig:decompositions}
+\end{figure}%
+%
+\begin{figure}[hbt]
+    \centering
+    \input{Tikz/MultiGPU/DomainDecompDiagram}
+    \caption{Multi-GPU block structure of the global lattice mesh, illustrated with a $2 \times 2$ block structure per GPU. Tikz source code: Tikz/DomainDecompDiagram.tex}
+    \label{fig:DomainDecompDiagram}
+\end{figure}%
+%
+\begin{figure}[hbt!]
+    \centering
+    \input{Tikz/MultiGPU/haloExchangeDiagram}
+    \caption{Halo exchange between two GPU subdomains. Colours represent different halo regions and the inner domain. Arrows indicate data exchange between corresponding halo layers. Tikz source code: Tikz/haloExchangeDiagram.tex}
+    \label{fig:haloExchange}
+\end{figure}
+%
