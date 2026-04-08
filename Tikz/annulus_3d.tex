@@ -1,0 +1,103 @@
+\documentclass[tikz,border=5pt]{standalone}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{bm}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{arrows}
+\usepackage{pstricks}
+\usetikzlibrary{patterns}
+\usetikzlibrary{fadings}
+\usetikzlibrary{shapes.geometric}
+
+\begin{document}
+	
+	% Set the viewing angle
+	\tdplotsetmaincoords{70}{0}
+	
+	\begin{tikzpicture}[tdplot_main_coords, line join=round]
+		
+		\tikzset{mybluearrow/.style={-Latex, blue, line width=0.6mm, shorten <=-2pt}}
+		\tikzset{myblackarrow/.style={-Latex, black, line width=0.3mm, shorten <=-2pt}}
+		
+		% Parameters
+		\def\Rout{3.5}   % outer radius
+		\def\Rin{2}    % inner radius
+		\def\H{8}      % height
+		\def\Rmid{3} 
+		
+% Bottom front half (solid)
+		\draw[thick] (0,0,0) ++(180:\Rout) arc[start angle=180, end angle=360, radius=\Rout];
+		
+% Bottom backhalf (dashed)
+		\draw[thick, dashed] (0,0,0) ++(0:\Rout) arc[start angle=0, end angle=180, radius=\Rout];
+		
+%middle full dashed circle	
+		\draw[blue, thick, dashed] (0,11,0) circle (\Rmid);
+		
+		
+% outer side vertical lines	
+		\draw[thick] ( \Rout,0,0) -- ( \Rout,0,\H);
+		\draw[thick] (-\Rout,0,0) -- (-\Rout,0,\H);
+
+%bottom inner circle part
+		\draw[thick] (0,0,0) circle (\Rin);
+		
+%inner side lines		
+		\draw[thick] ( \Rin,0,0) -- (\Rin,0,\H);
+		\draw[thick] (-\Rin,0,0) -- (-\Rin,0,\H);
+
+%inner rectangular gray part		
+		\fill[gray!60] 		(-2,0,0) -- (2,0,0) -- (2,11,4) -- (-2,11,4) -- cycle;
+
+%top inner white filled circle
+		\fill[white] 		(0,0,\H) circle (\Rin);
+		
+%bottom inner gray filled circle
+		\fill[gray!60] (0,0,0) circle (\Rin);
+		
+%top inner and outer circles
+		\draw[thick] (0,0,\H) circle (\Rin);
+		\draw[thick] (0,0,\H) circle (\Rout);
+
+		
+% Middle front half (dashed)
+		\draw[blue, thick, dashed] (0,11,0) ++(180:\Rmid)		arc[start angle=180, end angle=360, radius=\Rmid];
+		
+\draw[mybluearrow] (-2.7,9.7,0) -- (-2.4,9.2,0);
+
+\draw[mybluearrow] (2.7,12.3,0) -- (2.5,12.7,0);	
+
+\draw[black, thick, -{Latex}] (-1,23,0) ++(0:1) arc[start angle=90, end angle=310, radius=1];
+
+\draw[myblackarrow] (0.01,22,0) -- (3.35,23,0);
+\draw[myblackarrow] (0,22.1,0) -- (0.7,23.8,0);
+
+\draw[black, thick,, -{Latex}] (0,0,0) ++(0:0.8) arc[start angle=0, end angle=270, radius=0.8];
+
+\draw[black,dashed,line width=0.3mm] (0,0.1,0) -- (1,0,0);
+\draw[myblackarrow] (0,0.2,0) -- (0,3,0);
+\draw[myblackarrow] (0.05,0,0) -- (0.8,-1,0);
+
+\draw[black, dashed, line width=0.2mm] (-4,0,0) -- (-4,22,0);
+\draw[black, dashed, line width=0.2mm] (-4.2,0,0) -- (-3.8,0,0);
+\draw[black, dashed, line width=0.2mm] (-4.2,22,0) -- (-3.8,22,0);
+
+\draw (-4.3,11,0)node[]{\large{$L$}};
+\draw (-0.4,-0.2,0)node[]{\large{$\theta$}};
+\draw (0.9,-0.8,0)node[]{\large{$r$}};
+\draw (0,3.4,0)node[]{\large{$z$}};
+
+\draw (0.8,23.2,0)node[]{\large{$r_i$}};
+\draw (2.9,23.3,0)node[]{\large{$r_0$}};
+
+\draw (0.8,20.8,0)node[]{\large{$\omega_i$}};
+
+\draw (1.8,5,0) node[rotate=90] {\large{$inner$}};
+\draw (3.3,5,0) node[rotate=90] {\large{$outer$}};
+
+
+	\end{tikzpicture}
+	
+\end{document}
