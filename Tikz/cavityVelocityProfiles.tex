@@ -1,3 +1,17 @@
+\documentclass[tikz,border=5pt]{standalone}
+\usepackage[portuguese,english]{babel}
+%
+% Useful packages
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta}
+%
+\setlength{\parskip}{3.6pt}
+\definecolor{cor1}{RGB}{255, 87, 87}
+\begin{document}
 \begin{tikzpicture}[trim axis left, trim axis right]
 \begin{axis}[
     % Set width to less than text width for equal margins
@@ -32,3 +46,4 @@
 \addlegendentry{Prasad \& Koseff}
 \end{axis}
 \end{tikzpicture}
+\end{document}

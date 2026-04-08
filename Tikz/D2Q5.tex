@@ -1,34 +1,28 @@
-\begin{figure}[ht]
-\centering
-\tdplotsetmaincoords{0}{0} % adjust viewing angle
-\begin{tikzpicture}[scale=2, >=Stealth, tdplot_main_coords]
+\documentclass[tikz,border=5pt]{standalone}
+\usepackage[portuguese,english]{babel}
+%
+% Useful packages
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta}
+%
+\setlength{\parskip}{3.6pt}
+\definecolor{cor1}{RGB}{255, 87, 87}
+\begin{document}
+\begin{tikzpicture}[scale=2, >=Stealth]
 %
 % ---- 1. Draw the grid (edges of the 2×2×2 cube subdivided) ----
 \tikzset{grid line/.style={gray, very thin, densely dotted}}
 %
-% Lines parallel to x‑axis
-\foreach \y in {-1,0,1}
-{
-    \foreach \z in {-1,0,1}
-    {
-        \foreach \xstart in {-1,0}
-        {
-            \draw[grid line] (\xstart,\y,\z) -- (\xstart+1,\y,\z);
-        }
-    }
-}
-%
-% Lines parallel to y‑axis
-\foreach \x in {-1,0,1}
-{
-    \foreach \z in {-1,0,1}
-    {
-        \foreach \ystart in {-1,0}
-        {
-            \draw[grid line] (\x,\ystart,\z) -- (\x,\ystart+1,\z);
-        }
-    }
-}
+\draw[grid line] (-1,-1,0) -- (1,-1,0);
+\draw[grid line] (-1,0,0) -- (1,0,0);
+\draw[grid line] (-1,1,0) -- (1,1,0);
+\draw[grid line] (-1,-1,0) -- (-1,1,0);
+\draw[grid line] (0,-1,0) -- (0,1,0);
+\draw[grid line] (1,-1,0) -- (1,1,0);
 %
 % ---- Coordinate system (placed at a corner for clarity) ----
 %
@@ -47,5 +41,4 @@
 \node[circle, fill=black, inner sep=2pt] at (0,0,0) {};
 %
 \end{tikzpicture}
-\caption{The $\mathrm{D}2\mathrm{Q}5$ velocity set. Tikz source code: Tikz/D2Q5.tex}\label{fig:D2Q5}
-\end{figure}
+\end{document}
