@@ -10,87 +10,73 @@
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{arrows.meta}
 \begin{document}
-\tdplotsetmaincoords{75}{120} % adjust viewing angle
-\begin{tikzpicture}[scale=2, >=Stealth, tdplot_main_coords]
+\tdplotsetmaincoords{75}{30}
+\begin{tikzpicture}[scale=1, >=Stealth, tdplot_main_coords]
 %
+\def\L{2}
 % ---- 1. Draw the grid (edges of the 2×2×2 cube subdivided) ----
-\tikzset{grid line/.style={gray, very thin, densely dotted}}
+%\path[use as bounding box] (-\L,-\L,-\L) rectangle (\L,\L,\L);
+\tikzset{grid line/.style={gray, dashed}}
 %
 % Lines parallel to x‑axis
-\foreach \y in {-1,0,1}
+\foreach \y in {-\L,0,\L}
 {
-    \foreach \z in {-1,0,1}
+    \foreach \z in {-\L,0,\L}
     {
-        \foreach \xstart in {-1,0}
+        \foreach \xstart in {-\L,0}
         {
-            \draw[grid line] (\xstart,\y,\z) -- (\xstart+1,\y,\z);
+            \draw[grid line] (\xstart,\y,\z) -- (\xstart+\L,\y,\z);
         }
     }
 }
 %
 % Lines parallel to y‑axis
-\foreach \x in {-1,0,1}
+\foreach \x in {-\L,0,\L}
 {
-    \foreach \z in {-1,0,1}
+    \foreach \z in {-\L,0,\L}
     {
-        \foreach \ystart in {-1,0}
+        \foreach \ystart in {-\L,0}
         {
-            \draw[grid line] (\x,\ystart,\z) -- (\x,\ystart+1,\z);
+            \draw[grid line] (\x,\ystart,\z) -- (\x,\ystart+\L,\z);
         }
     }
 }
 %
 % Lines parallel to z‑axis
-\foreach \x in {-1,0,1}
+\foreach \x in {-\L,0,\L}
 {
-    \foreach \y in {-1,0,1}
+    \foreach \y in {-\L,0,\L}
     {
-        \foreach \zstart in {-1,0}
+        \foreach \zstart in {-\L,0}
         {
-            \draw[grid line] (\x,\y,\zstart) -- (\x,\y,\zstart+1);
+            \draw[grid line] (\x,\y,\zstart) -- (\x,\y,\zstart+\L);
         }
     }
 }
 %
-%
 % ---- Coordinate system (placed at a corner for clarity) ----
 %
 \begin{scope}[thick, ->, >=Stealth]
-  \draw (1.2,-1.2,-1.2) -- ++(0.8,0,0) node[above] {$z$};
-  \draw (1.2,-1.2,-1.2) -- ++(0,0.8,0) node[above] {$x$};
-  \draw (1.2,-1.2,-1.2) -- ++(0,0,0.8) node[left] {$y$};
+  \draw (-\L*1.2,-\L*1.2,-\L*1.2) -- ++(\L*0.8,0,0) node[above] {$x$};
+  \draw (-\L*1.2,-\L*1.2,-\L*1.2) -- ++(0,-\L*0.8,0) node[above] {$y$};
+  \draw (-\L*1.2,-\L*1.2,-\L*1.2) -- ++(0,0,\L*0.8) node[left] {$z$};
 \end{scope}
 %
 % ---- Draw population lines from centre to every other lattice point ----
 %
-\draw[->] (0,0,0) -- (1,0,0);
-\draw[->] (0,0,0) -- (-1,0,0);
-\draw[->] (0,0,0) -- (0,1,0);
-\draw[->] (0,0,0) -- (0,-1,0);
-\draw[->] (0,0,0) -- (0,0,1);
-\draw[->] (0,0,0) -- (0,0,-1);
-\draw[->] (0,0,0) -- (1,1,0);
-\draw[->] (0,0,0) -- (1,-1,0);
-\draw[->] (0,0,0) -- (-1,1,0);
-\draw[->] (0,0,0) -- (-1,-1,0);
-\draw[->] (0,0,0) -- (1,0,1);
-\draw[->] (0,0,0) -- (1,0,-1);
-\draw[->] (0,0,0) -- (-1,0,1);
-\draw[->] (0,0,0) -- (-1,0,-1);
-\draw[->] (0,0,0) -- (0,1,1);
-\draw[->] (0,0,0) -- (0,1,-1);
-\draw[->] (0,0,0) -- (0,-1,1);
-\draw[->] (0,0,0) -- (0,-1,-1);
-\draw[->] (0,0,0) -- (1,1,1);
-\draw[->] (0,0,0) -- (1,1,-1);
-\draw[->] (0,0,0) -- (1,-1,1);
-\draw[->] (0,0,0) -- (1,-1,-1);
-\draw[->] (0,0,0) -- (-1,1,1);
-\draw[->] (0,0,0) -- (-1,1,-1);
-\draw[->] (0,0,0) -- (-1,-1,1);
-\draw[->] (0,0,0) -- (-1,-1,-1);
+\foreach \x/\y/\z [count=\i] in {
+  \L/0/0,  -\L/0/0,  0/\L/0,   0/-\L/0,   0/0/\L,   0/0/-\L,
+  \L/\L/0,  \L/-\L/0,  -\L/\L/0,  -\L/-\L/0,
+  \L/0/\L,  \L/0/-\L,  -\L/0/\L,  -\L/0/-\L,
+  0/\L/\L,  0/\L/-\L,  0/-\L/\L,  0/-\L/-\L,
+  \L/\L/\L,  \L/\L/-\L,  \L/-\L/\L,  \L/-\L/-\L,
+  -\L/\L/\L, -\L/\L/-\L, -\L/-\L/\L, -\L/-\L/-\L
+}
+{
+    \draw[->] (0,0,0) -- (\x,\y,\z);
+}
 %
-\node[circle, fill=black, inner sep=2pt] at (0,0,0) {};
+\node[circle, fill=black, inner sep=1pt] at (0,0,0) {};
 %
 \end{tikzpicture}
 \end{document}

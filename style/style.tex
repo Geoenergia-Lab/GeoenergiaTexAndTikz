@@ -14,6 +14,21 @@
 \definecolor{ApplePalette6}{RGB}{0, 157, 220}
 \definecolor{ApplePalette7}{RGB}{255, 105, 180}
 \definecolor{ApplePalette8}{RGB}{107, 194, 213}
+\definecolor{iceblue}{RGB}{0,180,225}
+\definecolor{darkiceblue}{RGB}{0,120,150}
+\definecolor{verydarkiceblue}{RGB}{0,60,75}
+\pgfdeclareverticalshading{icefade-gamma}{50bp}
+{
+  color(0bp)=(white);
+  color(25bp)=(darkiceblue);
+  color(50bp)=(white)
+}
+\pgfdeclareverticalshading{icefade-gamma-inverse}{50bp}
+{
+  color(0bp)=(darkiceblue);
+  color(25bp)=(white);
+  color(50bp)=(darkiceblue)
+}
 \setlength{\parskip}{3.6pt}
 \definecolor{cor1}{RGB}{255, 87, 87}
 \newcommand{\definetitle}[1]

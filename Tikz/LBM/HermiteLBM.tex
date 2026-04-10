@@ -5,7 +5,7 @@
 \usepackage{bm}
 \usepackage[utf8]{inputenc}
 \usepackage{pgfplots}
-\usepackage[sfdefault]{roboto}
+%\usepackage[sfdefault]{roboto}
 \usepgfplotslibrary{fillbetween}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, positioning, calc}
@@ -264,7 +264,7 @@
 % Upper curve (second curve) – named path "lower"
 \addplot[white, very thick, domain=0.6:2.6] {-\TildeThickness*cos(deg(pi*(x - 8/5))/\TildeWidth) - \TildeHeight*(sin(deg(2*pi*(x - 8/5))/\TildeWidth) - x + 8/5) + 9/4};
 %
-\node[anchor=west, font=\sffamily\huge, inner sep=0pt] (title) at ([xshift=30]C.east) {{$\bm{\mathcal{H}}$}\textbf{ermite}LBM};
+\node[anchor=west, font=\sffamily\huge, inner sep=0pt] (title) at ([xshift=30]C.east) {\Huge{$\bm{\mathcal{H}}$}\huge\textbf{ermite}LBM};
 %
 % Subtitle / second text box below the title
 \node[below = 0 of title.south, font=\sffamily\tiny, align=center]{MOMENT-BASED LATTICE BOLTZMANN METHOD};
