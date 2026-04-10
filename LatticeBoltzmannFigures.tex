@@ -13,13 +13,14 @@
 %
 \begin{figure}[hbt]
 \centering
-\begin{subfigure}{0.5\textwidth}
+\begin{subfigure}{0.48\textwidth}
     \centering
     \input{Tikz/LBM/D3Q27}
     \caption{The D3Q27 velocity set.}
     \label{fig:D3Q27}
-\end{subfigure}%
-\begin{subfigure}{0.5\textwidth}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.48\textwidth}
     \centering
     \input{Tikz/LBM/D3Q19}
     \caption{The D3Q19 velocity set.}
@@ -33,13 +34,14 @@
 %
 \begin{figure}[hbt]
 \centering
-\begin{subfigure}{0.5\textwidth}
+\begin{subfigure}{0.48\textwidth}
     \centering
     \input{Tikz/LBM/D2Q9}
     \caption{The D2Q9 velocity set.}
     \label{fig:D2Q9}
-\end{subfigure}%
-\begin{subfigure}{0.5\textwidth}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.48\textwidth}
     \centering
     \input{Tikz/LBM/D2Q5}
     \caption{The D2Q5 velocity set.}
@@ -64,7 +66,7 @@
             \centering
             \input{Tikz/LBM/pullStreamingWrite}
         \end{minipage}
-        \caption{Pull streaming: each thread reads populations from neighbouring nodes (incoming arrows) and writes the collided result to its own node. Reads are non-coalesced but writes are coalesced}
+        \caption{Pull streaming: each thread reads populations from neighbouring nodes and writes the collided result to its own node. Reads are non-coalesced but writes are coalesced}
         \label{fig:pull_streaming}
     \end{subfigure}
     \hfill
