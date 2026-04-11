@@ -16,70 +16,63 @@
 	\def\rstart{0.2}   % distance from center
 	\def\rlen{1.8}      % arrow length
 
+	\fill[gray!40] (4,4) -- (8,4) -- (8,6) -- (4,6) -- cycle;
 
-\fill[gray!40] (4,4) -- (8,4) -- (8,6) -- (4,6) -- cycle;
+	\fill[pattern=north west lines, pattern color=black!60] (4,4) -- (8,4) -- (8,6) -- (4,6) -- cycle;
 
-\fill[pattern=north west lines, pattern color=black!60] (4,4) -- (8,4) -- (8,6) -- (4,6) -- cycle;
+	%\draw[dashed,thin,line width=0.1mm] (3.5,4) -- (8.5,4);
 
-%\draw[dashed,thin,line width=0.1mm] (3.5,4) -- (8.5,4);
+	\draw[solid,thin,line width=0.2mm, gray!20] (4,2) -- (8,2);
+	\draw[solid,thin,line width=0.2mm, gray!20] (4,6) -- (8,6);
 
-\draw[solid,thin,line width=0.2mm, gray!20] (4,2) -- (8,2);
-\draw[solid,thin,line width=0.2mm, gray!20] (4,6) -- (8,6);
+	\draw[solid,thin,line width=0.2mm, gray!20] (6,2) -- (6,6);
+	\draw[solid,thin,line width=0.2mm, gray!20] (8,2) -- (8,6);
+	\draw[solid,thin,line width=0.2mm, gray!20] (4,2) -- (4,6);
 
-\draw[solid,thin,line width=0.2mm, gray!20] (6,2) -- (6,6);
-\draw[solid,thin,line width=0.2mm, gray!20] (8,2) -- (8,6);
-\draw[solid,thin,line width=0.2mm, gray!20] (4,2) -- (4,6);
+	% left (3)
+	\draw[black, thick, {Latex}-]
+	(6,4) ++(\rstart,0) -- ++(\rlen,0)
+	node[midway,below, xshift=-5pt, yshift=1pt] {$\bm{c}_3$};
 
-% left (3)
-\draw[black, thick, {Latex}-]
-(6,4) ++(\rstart,0) -- ++(\rlen,0)
-node[midway,below, xshift=-5pt, yshift=1pt] {$\bm{c}_3$};
+	% left (1)
+	\draw[black, thick, {Latex}-]
+	(6,4) ++(-\rstart,0) -- ++(-\rlen,0)
+	node[midway, below,  xshift=5pt,yshift=1pt] {$\bm{c}_1$};
 
-% left (1)
-\draw[black, thick, {Latex}-]
-(6,4) ++(-\rstart,0) -- ++(-\rlen,0)
-node[midway, below,  xshift=5pt,yshift=1pt] {$\bm{c}_1$};
+	% down (2)
+	\draw[black, thick, {Latex}-]
+	(6,4) ++(0,-\rstart) -- ++(0,-\rlen)
+	node[midway, left, xshift=2pt] {$\bm{c}_2$};
 
-% down (2)
-\draw[black, thick, {Latex}-]
-(6,4) ++(0,-\rstart) -- ++(0,-\rlen)
-node[midway, left, xshift=2pt] {$\bm{c}_2$};
+	\draw[black, thick, {Latex}-]
+	(6,4) ++(-\rstart,-\rstart) -- ++(-\rlen,-\rlen)
+	node[midway, below left,xshift=2pt, yshift=-7pt] {$\bm{c}_5$};
 
-\draw[black, thick, {Latex}-]
-(6,4) ++(-\rstart,-\rstart) -- ++(-\rlen,-\rlen)
-node[midway, below left,xshift=2pt, yshift=-7pt] {$\bm{c}_5$};
+	\draw[black, thick, {Latex}-]
+	(6,4) ++(\rstart,-\rstart) -- ++(\rlen,-\rlen)
+	node[midway, below right, xshift=-2pt,yshift=-6pt] {$\bm{c}_6$};
 
-\draw[black, thick, {Latex}-]
-(6,4) ++(\rstart,-\rstart) -- ++(\rlen,-\rlen)
-node[midway, below right, xshift=-2pt,yshift=-6pt] {$\bm{c}_6$};
+	%\draw (5.8,4.6)node[]{$\mathbf{0}$};
+	%\draw (8.3,4.3)node[]{$\mathbf{1}$};
+	%\draw (6.3,6.3)node[]{$\mathbf{2}$};
+	%\draw (3.7,4.3)node[]{$\mathbf{3}$};
+	%\draw (5.7,1.7)node[]{$\mathbf{4}$};
+	%\draw (8.3,6.3)node[]{$\mathbf{5}$};
+	%\draw (3.7,6.3)node[]{$\mathbf{6}$};
+	%\draw (3.7,1.7)node[]{$\mathbf{7}$};
+	%\draw (8.3,1.7)node[]{$\mathbf{8}$};
 
-%\draw (5.8,4.6)node[]{$\mathbf{0}$};
-%\draw (8.3,4.3)node[]{$\mathbf{1}$};
-%\draw (6.3,6.3)node[]{$\mathbf{2}$};
-%\draw (3.7,4.3)node[]{$\mathbf{3}$};
-%\draw (5.7,1.7)node[]{$\mathbf{4}$};
-%\draw (8.3,6.3)node[]{$\mathbf{5}$};
-%\draw (3.7,6.3)node[]{$\mathbf{6}$};
-%\draw (3.7,1.7)node[]{$\mathbf{7}$};
-%\draw (8.3,1.7)node[]{$\mathbf{8}$};
-
-\draw[black,fill=black] (6,4)node[]{} circle(0.12cm); %0
-\draw[white,fill=black] (6,4)node[]{} circle(0.11cm); %0
-\draw[black,fill=black] (8,4)node[]{} circle(0.1cm);%1
-\draw[black,fill=white] (6,2)node[]{} circle(0.1cm);%2
-\draw[black,fill=black] (4,4)node[]{} circle(0.1cm);%3
-%\draw[gray,fill=gray] (6,6)node[]{} circle(0.1cm);%4
-%\draw[gray,fill=gray] (8,6)node[]{} circle(0.1cm);%5
-%\draw[gray,fill=gray] (4,6)node[]{} circle(0.1cm);%6
-\draw[black,fill=white] (4,2)node[]{} circle(0.1cm);%7
-\draw[black,fill=white] (8,2)node[]{} circle(0.1cm);%8
-
-
-
-
+	\draw[black,fill=black] (6,4)node[]{} circle(0.12cm); %0
+	\draw[white,fill=black] (6,4)node[]{} circle(0.11cm); %0
+	\draw[black,fill=black] (8,4)node[]{} circle(0.1cm);%1
+	\draw[black,fill=white] (6,2)node[]{} circle(0.1cm);%2
+	\draw[black,fill=black] (4,4)node[]{} circle(0.1cm);%3
+	%\draw[gray,fill=gray] (6,6)node[]{} circle(0.1cm);%4
+	%\draw[gray,fill=gray] (8,6)node[]{} circle(0.1cm);%5
+	%\draw[gray,fill=gray] (4,6)node[]{} circle(0.1cm);%6
+	\draw[black,fill=white] (4,2)node[]{} circle(0.1cm);%7
+	\draw[black,fill=white] (8,2)node[]{} circle(0.1cm);%8
 
 \end{tikzpicture}
 \end{document}
-
-
 

@@ -37,22 +37,22 @@
         \fill[colGreen]  (4,0) rectangle (5,1);
         \fill[colGreen]  (0,4) rectangle (1,5);
         \fill[colGreen]  (4,4) rectangle (5,5);
-        
+
         % 2. Fill Top / Bottom Halos
         \fill[colBlue]   (1,0) rectangle (4,1);
         \fill[colBlue]   (1,4) rectangle (4,5);
-        
+
         % 3. Fill Left / Right Halos
         \fill[colOrange] (0,1) rectangle (1,4);
         \fill[colOrange] (4,1) rectangle (5,4);
-        
+
         % 4. Fill Inner Domain
         \fill[colGray]   (1,1) rectangle (4,4);
-        
+
         % 5. Draw Grid and Borders
         \draw[step=28pt, densely dashed, semithick] (0,0) grid (5,5);
         \draw[thick] (1,1) rectangle (4,4); % Solid inner border
-        
+
         % 6. Center Label
         \node at (2.5, 2.5) {\Large $p_{1}$};
     \end{scope}
@@ -66,22 +66,22 @@
         \fill[colBlue]   (4,0) rectangle (5,1);
         \fill[colBlue]   (0,4) rectangle (1,5);
         \fill[colBlue]   (4,4) rectangle (5,5);
-        
+
         % 2. Fill Top / Bottom Halos
         \fill[colGreen]  (1,0) rectangle (4,1);
         \fill[colGreen]  (1,4) rectangle (4,5);
-        
+
         % 3. Fill Left / Right Halos
         \fill[colGray]   (0,1) rectangle (1,4);
         \fill[colGray]   (4,1) rectangle (5,4);
-        
+
         % 4. Fill Inner Domain
         \fill[colOrange] (1,1) rectangle (4,4);
-        
+
         % 5. Draw Grid and Borders
         \draw[step=28pt, densely dashed, semithick] (0,0) grid (5,5);
         \draw[thick] (1,1) rectangle (4,4); % Solid inner border
-        
+
         % 6. Center Label
         \node at (2.5, 2.5) {\Large $p_{2}$};
     \end{scope}
@@ -89,7 +89,7 @@
     % ==========================================
     % Arrows for Ghost/Halo Cell Exchange
     % ==========================================
-    
+
     % Arrow 1: From Block 3 (inner right) to Block 4 (left halo)
     \draw[->, thick] (3.5, 3.5) to[out=15, in=165] (8.5, 3.5);
     % Manually place c_x at the approximate midpoint (straight-line midpoint + upward offset)

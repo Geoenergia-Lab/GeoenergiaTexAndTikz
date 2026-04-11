@@ -12,33 +12,33 @@
 \begin{document}
 \tikzset
 {
-  d3q27/line/.style={-{Stealth[length=4pt]}, thick, black!25},
-  d3q27out/line/.style={-{Stealth[length=4pt]}, thick, black},
-  bgarrow/.style={d3q27/line, lightgray, {Stealth[length=4pt]}-{Stealth[length=4pt]}, shorten >=1.5pt, shorten <=1.5pt},
-  fgarrow/.style={d3q27out/line, shorten >=1.5pt},
-  bgdoublearrow/.style={d3q27/line, lightgray, {Stealth[length=4pt]}-{Stealth[length=4pt]}, shorten >=1.5pt, shorten <=1.5pt},
-  fgdoublearrow/.style={d3q27out/line, {Stealth[length=4pt]}-{Stealth[length=4pt]}, shorten >=1.5pt, shorten <=1.5pt}
+d3q27/line/.style={-{Stealth[length=4pt]}, thick, black!25},
+d3q27out/line/.style={-{Stealth[length=4pt]}, thick, black},
+bgarrow/.style={d3q27/line, lightgray, {Stealth[length=4pt]}-{Stealth[length=4pt]}, shorten >=1.5pt, shorten <=1.5pt},
+fgarrow/.style={d3q27out/line, shorten >=1.5pt},
+bgdoublearrow/.style={d3q27/line, lightgray, {Stealth[length=4pt]}-{Stealth[length=4pt]}, shorten >=1.5pt, shorten <=1.5pt},
+fgdoublearrow/.style={d3q27out/line, {Stealth[length=4pt]}-{Stealth[length=4pt]}, shorten >=1.5pt, shorten <=1.5pt}
 }
 \begin{tikzpicture}[scale=1]
     % Grid lines
     \foreach \i in {0,...,3}
-    {
-        \draw[lightgray!50, semithick] (-0.25, \i) -- (3.25, \i);
-        \draw[lightgray!50, semithick] (\i, -0.25) -- (\i, 3.25);
-    }
-    
+        {
+            \draw[lightgray!50, semithick] (-0.25, \i) -- (3.25, \i);
+            \draw[lightgray!50, semithick] (\i, -0.25) -- (\i, 3.25);
+        }
+
     % Background D2Q9 arrows
     \foreach \x in {0,...,2}
-    {
-        \foreach \y in {0,...,2}
         {
-            \draw[bgarrow] (\x, \y+0.5) -- (\x+1, \y+0.5);
-            \draw[bgarrow] (\x+0.5, \y) -- (\x+0.5, \y+1);
-            \draw[bgarrow] (\x, \y) -- (\x+1, \y+1);
-            \draw[bgarrow] (\x+1, \y) -- (\x, \y+1);
+            \foreach \y in {0,...,2}
+                {
+                    \draw[bgarrow] (\x, \y+0.5) -- (\x+1, \y+0.5);
+                    \draw[bgarrow] (\x+0.5, \y) -- (\x+0.5, \y+1);
+                    \draw[bgarrow] (\x, \y) -- (\x+1, \y+1);
+                    \draw[bgarrow] (\x+1, \y) -- (\x, \y+1);
+                }
         }
-    }
-    
+
     % Foreground pull arrows (read)
     \draw[fgarrow] (0.5,1.5) -- (1,1.5);
     \draw[fgarrow] (2.5,1.5) -- (2,1.5);
@@ -48,14 +48,14 @@
     \draw[fgarrow] (2.5,0.5) -- (2,1);
     \draw[fgarrow] (0.5,2.5) -- (1,2);
     \draw[fgarrow] (2.5,2.5) -- (2,2);
-    
+
     % Nodes
     \foreach \x in {0,...,3}
-    {
-        \foreach \y in {0,...,3}
         {
-            \fill[lightgray] (\x,\y) circle (1.5pt);
+            \foreach \y in {0,...,3}
+                {
+                    \fill[lightgray] (\x,\y) circle (1.5pt);
+                }
         }
-    }
 \end{tikzpicture}
 \end{document}

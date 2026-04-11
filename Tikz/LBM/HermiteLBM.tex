@@ -36,239 +36,239 @@
 %
 \begin{document}
 \begin{tikzpicture}[scale=1]
-\begin{axis}[
-    hide axis,
-    axis equal image,
-    clip = true,
-    xmin = 0, xmax = 10,
-    ymin = 0, ymax = 4.5,
-    samples = 1000,
-    fill between/on layer={main}
-]
-%
-\def\L{0.5}
-\def\H{0.8}
-\def\dH{0.25}
-\coordinate (C) at (1.6,2.25);
-\def\outerR{2}
-\def\innerR{1.8}
-%
-% Outer hexagon with diagonal shading
-\node[regular polygon, regular polygon sides=6, minimum size=\outerR cm, shade, rotate=30, shading=icefade-gamma-inverse, transform shape] at (C) {};
-%
-% Inner pure white hexagon
-\node[regular polygon, regular polygon sides=6, minimum size=\innerR cm, fill=white, draw=none, rotate=30] at (C) {};
-%
-\coordinate (P0) at ($(C) + (-\H, \dH/2 + 2*\dH)$);
-\coordinate (P1) at ($(C) + (-\H+0.5*\L, \dH*3)$);
-\coordinate (P2) at ($(C) + (-\H+\L, \dH/2 + 2*\dH)$);
-\coordinate (P3) at ($(C) + (-\H+\L, -\dH/2 - 2*\dH)$);
-\coordinate (P4) at ($(C) + (-\H+0.5*\L, -\dH*3)$);
-\coordinate (P5) at ($(C) + (-\H, -\dH/2 - 2*\dH)$);
-%
-\coordinate (P6) at ($(C) + (\H, \dH/2 + 2*\dH)$);
-\coordinate (P7) at ($(C) + (\H-0.5*\L, \dH*3)$);
-\coordinate (P8) at ($(C) + (\H-\L, \dH/2 + 2*\dH)$);
-\coordinate (P9) at ($(C) + (\H-\L, -\dH/2 - 2*\dH)$);
-\coordinate (P10) at ($(C) + (\H-0.5*\L, -\dH*3)$);
-\coordinate (P11) at ($(C) + (\H, -\dH/2 - 2*\dH)$);
-%
-% First leg of the H
-%
-\shade[shading=icefade-gamma] 
-(P0) -- (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- cycle;
-%
-\draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 - 2*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*3)$);
-\draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 - 1*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*2)$);
-\draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 - 0*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*1)$);
-\draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 + 1*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*0)$);
-\draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 + 2*\dH)$) -- ($(C) + (-\H+0.5*\L, \dH*1)$);
-\draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 + 3*\dH)$) -- ($(C) + (-\H+0.5*\L, \dH*2)$);
-%
-\draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 - 2*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*2)$);
-\draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 - 1*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*1)$);
-\draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 - 0*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*0)$);
-\draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 + 1*\dH)$) -- ($(C) + (-\H+0.5*\L, +\dH*1)$);
-\draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 + 2*\dH)$) -- ($(C) + (-\H+0.5*\L, \dH*2)$);
-\draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 + 3*\dH)$) -- ($(C) + (-\H+0.5*\L, \dH*3)$);
-%
-\draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 - 2*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*3)$);
-\draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 - 1*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*2)$);
-\draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 - 0*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*1)$);
-\draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 + 1*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*0)$);
-\draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 + 2*\dH)$) -- ($(C) + (-\H+0.5*\L, \dH*1)$);
-\draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 + 3*\dH)$) -- ($(C) + (-\H+0.5*\L, \dH*2)$);
-%
-\draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 - 2*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*2)$);
-\draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 - 1*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*1)$);
-\draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 - 0*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*0)$);
-\draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 + 1*\dH)$) -- ($(C) + (-\H+0.5*\L, \dH*1)$);
-\draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 + 2*\dH)$) -- ($(C) + (-\H+0.5*\L, \dH*2)$);
-\draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 + 3*\dH)$) -- ($(C) + (-\H+0.5*\L, \dH*3)$);
-%
-\draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 - 2*\dH)$) -- ($(C) + (-\H, -\dH/2 - 1*\dH)$);
-\draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 - 1*\dH)$) -- ($(C) + (-\H, -\dH/2 - 0*\dH)$);
-\draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 - 0*\dH)$) -- ($(C) + (-\H, -\dH/2 + 1*\dH)$);
-\draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 + 1*\dH)$) -- ($(C) + (-\H, -\dH/2 + 2*\dH)$);
-\draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 + 2*\dH)$) -- ($(C) + (-\H, -\dH/2 + 3*\dH)$);
-%
-\draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 - 2*\dH)$) -- ($(C) + (-\H+\L, -\dH/2 - 1*\dH)$);
-\draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 - 1*\dH)$) -- ($(C) + (-\H+\L, -\dH/2 - 0*\dH)$);
-\draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 - 0*\dH)$) -- ($(C) + (-\H+\L, -\dH/2 + 1*\dH)$);
-\draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 + 1*\dH)$) -- ($(C) + (-\H+\L, -\dH/2 + 2*\dH)$);
-\draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 + 2*\dH)$) -- ($(C) + (-\H+\L, -\dH/2 + 3*\dH)$);
-%
-\draw[color=darkiceblue] ($(C) + (-\H+0.5*\L, -3*\dH)$) -- ($(C) + (-\H+0.5*\L, -2*\dH)$);
-\draw[color=darkiceblue] ($(C) + (-\H+0.5*\L, -2*\dH)$) -- ($(C) + (-\H+0.5*\L, -1*\dH)$);
-\draw[color=darkiceblue] ($(C) + (-\H+0.5*\L, -1*\dH)$) -- ($(C) + (-\H+0.5*\L, -0*\dH)$);
-\draw[color=darkiceblue] ($(C) + (-\H+0.5*\L, 0*\dH)$) -- ($(C) + (-\H+0.5*\L, 1*\dH)$);
-\draw[color=darkiceblue] ($(C) + (-\H+0.5*\L, 1*\dH)$) -- ($(C) + (-\H+0.5*\L, 2*\dH)$);
-\draw[color=darkiceblue] ($(C) + (-\H+0.5*\L, 2*\dH)$) -- ($(C) + (-\H+0.5*\L, 3*\dH)$);
-%
-% Second leg of the H
-%
-\shade[shading=icefade-gamma] 
-(P6) -- (P7) -- (P8) -- (P9) -- (P10) -- (P11) -- cycle;
-%
-\draw[color=darkiceblue] ($(C) + (\H, -\dH/2 - 2*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*3)$);
-\draw[color=darkiceblue] ($(C) + (\H, -\dH/2 - 1*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*2)$);
-\draw[color=darkiceblue] ($(C) + (\H, -\dH/2 - 0*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*1)$);
-\draw[color=darkiceblue] ($(C) + (\H, -\dH/2 + 1*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*0)$);
-\draw[color=darkiceblue] ($(C) + (\H, -\dH/2 + 2*\dH)$) -- ($(C) + (\H-0.5*\L, \dH*1)$);
-\draw[color=darkiceblue] ($(C) + (\H, -\dH/2 + 3*\dH)$) -- ($(C) + (\H-0.5*\L, \dH*2)$);
-%
-\draw[color=darkiceblue] ($(C) + (\H, -\dH/2 - 2*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*2)$);
-\draw[color=darkiceblue] ($(C) + (\H, -\dH/2 - 1*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*1)$);
-\draw[color=darkiceblue] ($(C) + (\H, -\dH/2 - 0*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*0)$);
-\draw[color=darkiceblue] ($(C) + (\H, -\dH/2 + 1*\dH)$) -- ($(C) + (\H-0.5*\L, +\dH*1)$);
-\draw[color=darkiceblue] ($(C) + (\H, -\dH/2 + 2*\dH)$) -- ($(C) + (\H-0.5*\L, \dH*2)$);
-\draw[color=darkiceblue] ($(C) + (\H, -\dH/2 + 3*\dH)$) -- ($(C) + (\H-0.5*\L, \dH*3)$);
-%
-\draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 - 2*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*3)$);
-\draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 - 1*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*2)$);
-\draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 - 0*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*1)$);
-\draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 + 1*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*0)$);
-\draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 + 2*\dH)$) -- ($(C) + (\H-0.5*\L, \dH*1)$);
-\draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 + 3*\dH)$) -- ($(C) + (\H-0.5*\L, \dH*2)$);
-%
-\draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 - 2*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*2)$);
-\draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 - 1*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*1)$);
-\draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 - 0*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*0)$);
-\draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 + 1*\dH)$) -- ($(C) + (\H-0.5*\L, \dH*1)$);
-\draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 + 2*\dH)$) -- ($(C) + (\H-0.5*\L, \dH*2)$);
-\draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 + 3*\dH)$) -- ($(C) + (\H-0.5*\L, \dH*3)$);
-%
-\draw[color=darkiceblue] ($(C) + (\H, -\dH/2 - 2*\dH)$) -- ($(C) + (\H, -\dH/2 - 1*\dH)$);
-\draw[color=darkiceblue] ($(C) + (\H, -\dH/2 - 1*\dH)$) -- ($(C) + (\H, -\dH/2 - 0*\dH)$);
-\draw[color=darkiceblue] ($(C) + (\H, -\dH/2 - 0*\dH)$) -- ($(C) + (\H, -\dH/2 + 1*\dH)$);
-\draw[color=darkiceblue] ($(C) + (\H, -\dH/2 + 1*\dH)$) -- ($(C) + (\H, -\dH/2 + 2*\dH)$);
-\draw[color=darkiceblue] ($(C) + (\H, -\dH/2 + 2*\dH)$) -- ($(C) + (\H, -\dH/2 + 3*\dH)$);
-%
-\draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 - 2*\dH)$) -- ($(C) + (\H-\L, -\dH/2 - 1*\dH)$);
-\draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 - 1*\dH)$) -- ($(C) + (\H-\L, -\dH/2 - 0*\dH)$);
-\draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 - 0*\dH)$) -- ($(C) + (\H-\L, -\dH/2 + 1*\dH)$);
-\draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 + 1*\dH)$) -- ($(C) + (\H-\L, -\dH/2 + 2*\dH)$);
-\draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 + 2*\dH)$) -- ($(C) + (\H-\L, -\dH/2 + 3*\dH)$);
-%
-\draw[color=darkiceblue] ($(C) + (\H-0.5*\L, -3*\dH)$) -- ($(C) + (\H-0.5*\L, -2*\dH)$);
-\draw[color=darkiceblue] ($(C) + (\H-0.5*\L, -2*\dH)$) -- ($(C) + (\H-0.5*\L, -1*\dH)$);
-\draw[color=darkiceblue] ($(C) + (\H-0.5*\L, -1*\dH)$) -- ($(C) + (\H-0.5*\L, -0*\dH)$);
-\draw[color=darkiceblue] ($(C) + (\H-0.5*\L, 0*\dH)$) -- ($(C) + (\H-0.5*\L, 1*\dH)$);
-\draw[color=darkiceblue] ($(C) + (\H-0.5*\L, 1*\dH)$) -- ($(C) + (\H-0.5*\L, 2*\dH)$);
-\draw[color=darkiceblue] ($(C) + (\H-0.5*\L, 2*\dH)$) -- ($(C) + (\H-0.5*\L, 3*\dH)$);
-%
-\fill[verydarkiceblue] ($(C) + (-\H, -\dH/2 - 2*\dH)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (-\H, -\dH/2 - \dH)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (-\H, -\dH/2)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (-\H, \dH/2)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (-\H, \dH/2 + \dH)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (-\H, \dH/2 + 2*\dH)$) circle (0.05cm);
-%
-\fill[verydarkiceblue] ($(C) + (-\H+\L, -\dH/2 - 2*\dH)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (-\H+\L, -\dH/2 - \dH)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (-\H+\L, -\dH/2)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (-\H+\L, \dH/2)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (-\H+\L, \dH/2 + \dH)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (-\H+\L, \dH/2 + 2*\dH)$) circle (0.05cm);
-%
-\fill[verydarkiceblue] ($(C) + (\H-\L, -\dH/2 - 2*\dH)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (\H-\L, -\dH/2 - \dH)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (\H-\L, -\dH/2)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (\H-\L, \dH/2)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (\H-\L, \dH/2 + \dH)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (\H-\L, \dH/2 + 2*\dH)$) circle (0.05cm);
-%
-\fill[verydarkiceblue] ($(C) + (\H, -\dH/2 - 2*\dH)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (\H, -\dH/2 - \dH)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (\H, -\dH/2)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (\H, \dH/2)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (\H, \dH/2 + \dH)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (\H, \dH/2 + 2*\dH)$) circle (0.05cm);
-%
-\fill[verydarkiceblue] ($(C) + (-\H+0.5*\L, -\dH*3)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (-\H+0.5*\L, -\dH*2)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (-\H+0.5*\L, -\dH*1)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (-\H+0.5*\L, 0)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (-\H+0.5*\L, \dH*1)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (-\H+0.5*\L, \dH*2)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (-\H+0.5*\L, \dH*3)$) circle (0.05cm);
-%
-\fill[verydarkiceblue] ($(C) + (\H-0.5*\L, -\dH*3)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (\H-0.5*\L, -\dH*2)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (\H-0.5*\L, -\dH*1)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (\H-0.5*\L, 0)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (\H-0.5*\L, \dH*1)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (\H-0.5*\L, \dH*2)$) circle (0.05cm);
-\fill[verydarkiceblue] ($(C) + (\H-0.5*\L, \dH*3)$) circle (0.05cm);
-%
-\def\Tx{1.6}
-\def\Ty{2.25}
-\def\TilW{1.2}
-\def\TilH{0.25}
-\def\TilCW{0.4}
-\def\TilCH{0.5}
-\def\TilCHTall{1.2}
-\def\TilWU{1.1}
-\def\TilHU{0.15}
-\def\TilCWU{0.4}
-\def\TilCHU{0.5}
-\def\TilCHTallU{0.8}
-\def\TildeHeight{0.3}
-\def\TildeWidth{2}
-\def\TildeThickness{0.2}
-% Centerline (first curve) – named path "center"
-\addplot[name path=center, draw=none, domain=0.6:2.6] {9/4 - \TildeHeight*(sin(deg(2*pi*(x - 8/5))/\TildeWidth) - x + 8/5)};
-%
-% Lower curve (second curve) – named path "upper"
-\addplot[name path=upper, draw=none, domain=0.6:2.6] {\TildeThickness*cos(deg(pi*(x - 8/5))/\TildeWidth) - \TildeHeight*(sin(deg(2*pi*(x - 8/5))/\TildeWidth) - x + 8/5) + 9/4};
-%
-% Upper curve (second curve) – named path "lower"
-\addplot[name path=lower, draw=none, domain=0.6:2.6] {-\TildeThickness*cos(deg(pi*(x - 8/5))/\TildeWidth) - \TildeHeight*(sin(deg(2*pi*(x - 8/5))/\TildeWidth) - x + 8/5) + 9/4};
-%
-\addplot[
-    shade, 
-    left color=darkiceblue, 
-    right color=iceblue, 
-    shading angle=45
-] fill between[of=center and upper];
-\addplot[
-    shade, 
-    left color=verydarkiceblue, 
-    right color=darkiceblue, 
-    shading angle=45
-] fill between[of=center and lower];
-%
-% Lower curve (second curve) – named path "upper"
-\addplot[white, very thick, domain=0.6:2.6] {\TildeThickness*cos(deg(pi*(x - 8/5))/\TildeWidth) - \TildeHeight*(sin(deg(2*pi*(x - 8/5))/\TildeWidth) - x + 8/5) + 9/4};
-%
-% Upper curve (second curve) – named path "lower"
-\addplot[white, very thick, domain=0.6:2.6] {-\TildeThickness*cos(deg(pi*(x - 8/5))/\TildeWidth) - \TildeHeight*(sin(deg(2*pi*(x - 8/5))/\TildeWidth) - x + 8/5) + 9/4};
-%
-\node[anchor=west, font=\sffamily\huge, inner sep=0pt] (title) at ([xshift=30]C.east) {\Huge{$\bm{\mathcal{H}}$}\huge\textbf{ermite}LBM};
-%
-% Subtitle / second text box below the title
-\node[below = 0 of title.south, font=\sffamily\tiny, align=center]{MOMENT-BASED LATTICE BOLTZMANN METHOD};
-%
-\end{axis}
+  \begin{axis}[
+      hide axis,
+      axis equal image,
+      clip = true,
+      xmin = 0, xmax = 10,
+      ymin = 0, ymax = 4.5,
+      samples = 1000,
+      fill between/on layer={main}
+    ]
+    %
+    \def\L{0.5}
+    \def\H{0.8}
+    \def\dH{0.25}
+    \coordinate (C) at (1.6,2.25);
+    \def\outerR{2}
+    \def\innerR{1.8}
+    %
+    % Outer hexagon with diagonal shading
+    \node[regular polygon, regular polygon sides=6, minimum size=\outerR cm, shade, rotate=30, shading=icefade-gamma-inverse, transform shape] at (C) {};
+    %
+    % Inner pure white hexagon
+    \node[regular polygon, regular polygon sides=6, minimum size=\innerR cm, fill=white, draw=none, rotate=30] at (C) {};
+    %
+    \coordinate (P0) at ($(C) + (-\H, \dH/2 + 2*\dH)$);
+    \coordinate (P1) at ($(C) + (-\H+0.5*\L, \dH*3)$);
+    \coordinate (P2) at ($(C) + (-\H+\L, \dH/2 + 2*\dH)$);
+    \coordinate (P3) at ($(C) + (-\H+\L, -\dH/2 - 2*\dH)$);
+    \coordinate (P4) at ($(C) + (-\H+0.5*\L, -\dH*3)$);
+    \coordinate (P5) at ($(C) + (-\H, -\dH/2 - 2*\dH)$);
+    %
+    \coordinate (P6) at ($(C) + (\H, \dH/2 + 2*\dH)$);
+    \coordinate (P7) at ($(C) + (\H-0.5*\L, \dH*3)$);
+    \coordinate (P8) at ($(C) + (\H-\L, \dH/2 + 2*\dH)$);
+    \coordinate (P9) at ($(C) + (\H-\L, -\dH/2 - 2*\dH)$);
+    \coordinate (P10) at ($(C) + (\H-0.5*\L, -\dH*3)$);
+    \coordinate (P11) at ($(C) + (\H, -\dH/2 - 2*\dH)$);
+    %
+    % First leg of the H
+    %
+    \shade[shading=icefade-gamma]
+    (P0) -- (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- cycle;
+    %
+    \draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 - 2*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*3)$);
+    \draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 - 1*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*2)$);
+    \draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 - 0*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*1)$);
+    \draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 + 1*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*0)$);
+    \draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 + 2*\dH)$) -- ($(C) + (-\H+0.5*\L, \dH*1)$);
+    \draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 + 3*\dH)$) -- ($(C) + (-\H+0.5*\L, \dH*2)$);
+    %
+    \draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 - 2*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*2)$);
+    \draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 - 1*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*1)$);
+    \draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 - 0*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*0)$);
+    \draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 + 1*\dH)$) -- ($(C) + (-\H+0.5*\L, +\dH*1)$);
+    \draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 + 2*\dH)$) -- ($(C) + (-\H+0.5*\L, \dH*2)$);
+    \draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 + 3*\dH)$) -- ($(C) + (-\H+0.5*\L, \dH*3)$);
+    %
+    \draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 - 2*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*3)$);
+    \draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 - 1*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*2)$);
+    \draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 - 0*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*1)$);
+    \draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 + 1*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*0)$);
+    \draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 + 2*\dH)$) -- ($(C) + (-\H+0.5*\L, \dH*1)$);
+    \draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 + 3*\dH)$) -- ($(C) + (-\H+0.5*\L, \dH*2)$);
+    %
+    \draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 - 2*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*2)$);
+    \draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 - 1*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*1)$);
+    \draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 - 0*\dH)$) -- ($(C) + (-\H+0.5*\L, -\dH*0)$);
+    \draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 + 1*\dH)$) -- ($(C) + (-\H+0.5*\L, \dH*1)$);
+    \draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 + 2*\dH)$) -- ($(C) + (-\H+0.5*\L, \dH*2)$);
+    \draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 + 3*\dH)$) -- ($(C) + (-\H+0.5*\L, \dH*3)$);
+    %
+    \draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 - 2*\dH)$) -- ($(C) + (-\H, -\dH/2 - 1*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 - 1*\dH)$) -- ($(C) + (-\H, -\dH/2 - 0*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 - 0*\dH)$) -- ($(C) + (-\H, -\dH/2 + 1*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 + 1*\dH)$) -- ($(C) + (-\H, -\dH/2 + 2*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (-\H, -\dH/2 + 2*\dH)$) -- ($(C) + (-\H, -\dH/2 + 3*\dH)$);
+    %
+    \draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 - 2*\dH)$) -- ($(C) + (-\H+\L, -\dH/2 - 1*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 - 1*\dH)$) -- ($(C) + (-\H+\L, -\dH/2 - 0*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 - 0*\dH)$) -- ($(C) + (-\H+\L, -\dH/2 + 1*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 + 1*\dH)$) -- ($(C) + (-\H+\L, -\dH/2 + 2*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (-\H+\L, -\dH/2 + 2*\dH)$) -- ($(C) + (-\H+\L, -\dH/2 + 3*\dH)$);
+    %
+    \draw[color=darkiceblue] ($(C) + (-\H+0.5*\L, -3*\dH)$) -- ($(C) + (-\H+0.5*\L, -2*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (-\H+0.5*\L, -2*\dH)$) -- ($(C) + (-\H+0.5*\L, -1*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (-\H+0.5*\L, -1*\dH)$) -- ($(C) + (-\H+0.5*\L, -0*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (-\H+0.5*\L, 0*\dH)$) -- ($(C) + (-\H+0.5*\L, 1*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (-\H+0.5*\L, 1*\dH)$) -- ($(C) + (-\H+0.5*\L, 2*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (-\H+0.5*\L, 2*\dH)$) -- ($(C) + (-\H+0.5*\L, 3*\dH)$);
+    %
+    % Second leg of the H
+    %
+    \shade[shading=icefade-gamma]
+    (P6) -- (P7) -- (P8) -- (P9) -- (P10) -- (P11) -- cycle;
+    %
+    \draw[color=darkiceblue] ($(C) + (\H, -\dH/2 - 2*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*3)$);
+    \draw[color=darkiceblue] ($(C) + (\H, -\dH/2 - 1*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*2)$);
+    \draw[color=darkiceblue] ($(C) + (\H, -\dH/2 - 0*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*1)$);
+    \draw[color=darkiceblue] ($(C) + (\H, -\dH/2 + 1*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*0)$);
+    \draw[color=darkiceblue] ($(C) + (\H, -\dH/2 + 2*\dH)$) -- ($(C) + (\H-0.5*\L, \dH*1)$);
+    \draw[color=darkiceblue] ($(C) + (\H, -\dH/2 + 3*\dH)$) -- ($(C) + (\H-0.5*\L, \dH*2)$);
+    %
+    \draw[color=darkiceblue] ($(C) + (\H, -\dH/2 - 2*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*2)$);
+    \draw[color=darkiceblue] ($(C) + (\H, -\dH/2 - 1*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*1)$);
+    \draw[color=darkiceblue] ($(C) + (\H, -\dH/2 - 0*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*0)$);
+    \draw[color=darkiceblue] ($(C) + (\H, -\dH/2 + 1*\dH)$) -- ($(C) + (\H-0.5*\L, +\dH*1)$);
+    \draw[color=darkiceblue] ($(C) + (\H, -\dH/2 + 2*\dH)$) -- ($(C) + (\H-0.5*\L, \dH*2)$);
+    \draw[color=darkiceblue] ($(C) + (\H, -\dH/2 + 3*\dH)$) -- ($(C) + (\H-0.5*\L, \dH*3)$);
+    %
+    \draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 - 2*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*3)$);
+    \draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 - 1*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*2)$);
+    \draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 - 0*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*1)$);
+    \draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 + 1*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*0)$);
+    \draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 + 2*\dH)$) -- ($(C) + (\H-0.5*\L, \dH*1)$);
+    \draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 + 3*\dH)$) -- ($(C) + (\H-0.5*\L, \dH*2)$);
+    %
+    \draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 - 2*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*2)$);
+    \draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 - 1*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*1)$);
+    \draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 - 0*\dH)$) -- ($(C) + (\H-0.5*\L, -\dH*0)$);
+    \draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 + 1*\dH)$) -- ($(C) + (\H-0.5*\L, \dH*1)$);
+    \draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 + 2*\dH)$) -- ($(C) + (\H-0.5*\L, \dH*2)$);
+    \draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 + 3*\dH)$) -- ($(C) + (\H-0.5*\L, \dH*3)$);
+    %
+    \draw[color=darkiceblue] ($(C) + (\H, -\dH/2 - 2*\dH)$) -- ($(C) + (\H, -\dH/2 - 1*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (\H, -\dH/2 - 1*\dH)$) -- ($(C) + (\H, -\dH/2 - 0*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (\H, -\dH/2 - 0*\dH)$) -- ($(C) + (\H, -\dH/2 + 1*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (\H, -\dH/2 + 1*\dH)$) -- ($(C) + (\H, -\dH/2 + 2*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (\H, -\dH/2 + 2*\dH)$) -- ($(C) + (\H, -\dH/2 + 3*\dH)$);
+    %
+    \draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 - 2*\dH)$) -- ($(C) + (\H-\L, -\dH/2 - 1*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 - 1*\dH)$) -- ($(C) + (\H-\L, -\dH/2 - 0*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 - 0*\dH)$) -- ($(C) + (\H-\L, -\dH/2 + 1*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 + 1*\dH)$) -- ($(C) + (\H-\L, -\dH/2 + 2*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (\H-\L, -\dH/2 + 2*\dH)$) -- ($(C) + (\H-\L, -\dH/2 + 3*\dH)$);
+    %
+    \draw[color=darkiceblue] ($(C) + (\H-0.5*\L, -3*\dH)$) -- ($(C) + (\H-0.5*\L, -2*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (\H-0.5*\L, -2*\dH)$) -- ($(C) + (\H-0.5*\L, -1*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (\H-0.5*\L, -1*\dH)$) -- ($(C) + (\H-0.5*\L, -0*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (\H-0.5*\L, 0*\dH)$) -- ($(C) + (\H-0.5*\L, 1*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (\H-0.5*\L, 1*\dH)$) -- ($(C) + (\H-0.5*\L, 2*\dH)$);
+    \draw[color=darkiceblue] ($(C) + (\H-0.5*\L, 2*\dH)$) -- ($(C) + (\H-0.5*\L, 3*\dH)$);
+    %
+    \fill[verydarkiceblue] ($(C) + (-\H, -\dH/2 - 2*\dH)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (-\H, -\dH/2 - \dH)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (-\H, -\dH/2)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (-\H, \dH/2)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (-\H, \dH/2 + \dH)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (-\H, \dH/2 + 2*\dH)$) circle (0.05cm);
+    %
+    \fill[verydarkiceblue] ($(C) + (-\H+\L, -\dH/2 - 2*\dH)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (-\H+\L, -\dH/2 - \dH)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (-\H+\L, -\dH/2)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (-\H+\L, \dH/2)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (-\H+\L, \dH/2 + \dH)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (-\H+\L, \dH/2 + 2*\dH)$) circle (0.05cm);
+    %
+    \fill[verydarkiceblue] ($(C) + (\H-\L, -\dH/2 - 2*\dH)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (\H-\L, -\dH/2 - \dH)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (\H-\L, -\dH/2)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (\H-\L, \dH/2)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (\H-\L, \dH/2 + \dH)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (\H-\L, \dH/2 + 2*\dH)$) circle (0.05cm);
+    %
+    \fill[verydarkiceblue] ($(C) + (\H, -\dH/2 - 2*\dH)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (\H, -\dH/2 - \dH)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (\H, -\dH/2)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (\H, \dH/2)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (\H, \dH/2 + \dH)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (\H, \dH/2 + 2*\dH)$) circle (0.05cm);
+    %
+    \fill[verydarkiceblue] ($(C) + (-\H+0.5*\L, -\dH*3)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (-\H+0.5*\L, -\dH*2)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (-\H+0.5*\L, -\dH*1)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (-\H+0.5*\L, 0)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (-\H+0.5*\L, \dH*1)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (-\H+0.5*\L, \dH*2)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (-\H+0.5*\L, \dH*3)$) circle (0.05cm);
+    %
+    \fill[verydarkiceblue] ($(C) + (\H-0.5*\L, -\dH*3)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (\H-0.5*\L, -\dH*2)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (\H-0.5*\L, -\dH*1)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (\H-0.5*\L, 0)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (\H-0.5*\L, \dH*1)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (\H-0.5*\L, \dH*2)$) circle (0.05cm);
+    \fill[verydarkiceblue] ($(C) + (\H-0.5*\L, \dH*3)$) circle (0.05cm);
+    %
+    \def\Tx{1.6}
+    \def\Ty{2.25}
+    \def\TilW{1.2}
+    \def\TilH{0.25}
+    \def\TilCW{0.4}
+    \def\TilCH{0.5}
+    \def\TilCHTall{1.2}
+    \def\TilWU{1.1}
+    \def\TilHU{0.15}
+    \def\TilCWU{0.4}
+    \def\TilCHU{0.5}
+    \def\TilCHTallU{0.8}
+    \def\TildeHeight{0.3}
+    \def\TildeWidth{2}
+    \def\TildeThickness{0.2}
+    % Centerline (first curve) – named path "center"
+    \addplot[name path=center, draw=none, domain=0.6:2.6] {9/4 - \TildeHeight*(sin(deg(2*pi*(x - 8/5))/\TildeWidth) - x + 8/5)};
+    %
+    % Lower curve (second curve) – named path "upper"
+    \addplot[name path=upper, draw=none, domain=0.6:2.6] {\TildeThickness*cos(deg(pi*(x - 8/5))/\TildeWidth) - \TildeHeight*(sin(deg(2*pi*(x - 8/5))/\TildeWidth) - x + 8/5) + 9/4};
+    %
+    % Upper curve (second curve) – named path "lower"
+    \addplot[name path=lower, draw=none, domain=0.6:2.6] {-\TildeThickness*cos(deg(pi*(x - 8/5))/\TildeWidth) - \TildeHeight*(sin(deg(2*pi*(x - 8/5))/\TildeWidth) - x + 8/5) + 9/4};
+    %
+    \addplot[
+      shade,
+      left color=darkiceblue,
+      right color=iceblue,
+      shading angle=45
+    ] fill between[of=center and upper];
+    \addplot[
+      shade,
+      left color=verydarkiceblue,
+      right color=darkiceblue,
+      shading angle=45
+    ] fill between[of=center and lower];
+    %
+    % Lower curve (second curve) – named path "upper"
+    \addplot[white, very thick, domain=0.6:2.6] {\TildeThickness*cos(deg(pi*(x - 8/5))/\TildeWidth) - \TildeHeight*(sin(deg(2*pi*(x - 8/5))/\TildeWidth) - x + 8/5) + 9/4};
+    %
+    % Upper curve (second curve) – named path "lower"
+    \addplot[white, very thick, domain=0.6:2.6] {-\TildeThickness*cos(deg(pi*(x - 8/5))/\TildeWidth) - \TildeHeight*(sin(deg(2*pi*(x - 8/5))/\TildeWidth) - x + 8/5) + 9/4};
+    %
+    \node[anchor=west, font=\sffamily\huge, inner sep=0pt] (title) at ([xshift=30]C.east) {\Huge{$\bm{\mathcal{H}}$}\huge\textbf{ermite}LBM};
+    %
+    % Subtitle / second text box below the title
+    \node[below = 0 of title.south, font=\sffamily\tiny, align=center]{MOMENT-BASED LATTICE BOLTZMANN METHOD};
+    %
+  \end{axis}
 \end{tikzpicture}
 \end{document}

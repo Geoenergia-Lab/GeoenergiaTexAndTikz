@@ -10,81 +10,81 @@
 \usetikzlibrary{arrows.meta}
 \begin{document}
 \begin{tikzpicture}[scale=1, x={(1cm,0cm)}, y={(0cm,1cm)}, z={(-0.6cm,-0.4cm)}, >=Stealth, font=\normalsize]
-%
-% ---------------------------------------------------------------------
-% --- Parameters ---
-% ---------------------------------------------------------------------
-\def\L{4}     % Characteristic length of the cavity
-\coordinate (C) at (0.5*\L,0.5*\L,1*\L);
-% ---------------------------------------------------------------------
-% --- Coordinates ---
-% ---------------------------------------------------------------------
-% Origin / Back Face (z=0)
-\coordinate (O)   at (0,0,0);         % Back-Left-Bottom (Origin)
-\coordinate (BRB) at (\L,0,0);        % Back-Right-Bottom
-\coordinate (BRT) at (\L,\L,0);       % Back-Right-Top
-\coordinate (BLT) at (0,\L,0);        % Back-Left-Top
-%
-% Front Face (z=L)
-\coordinate (FLB) at (0,0,\L);        % Front-Left-Bottom
-\coordinate (FRB) at (\L,0,\L);       % Front-Right-Bottom
-\coordinate (FRT) at (\L,\L,\L);      % Front-Right-Top
-\coordinate (FLT) at (0,\L,\L);       % Front-Left-Top
-%
-% Moving Lid Corners
-\coordinate (LidFL) at (0, \L, \L);   % Front-Left
-\coordinate (LidFR) at (\L, \L, \L);  % Front-Right
-\coordinate (LidBR) at (\L, \L, 0);   % Back-Right
-\coordinate (LidBL) at (0, \L, 0);    % Back-Left
-%
-% ---------------------------------------------------------------------
-% --- Draw Cavity ---
-% ---------------------------------------------------------------------
-%
-% Back wall and depth edges
-\draw (O) -- (BRB) -- (BRT);
-\draw (O) -- (BLT);
-\draw (O) -- (FLB);
-\draw (BRB) -- (FRB);
-%
-% Top cavity opening (hidden under lid)
-\draw (BLT) -- (BRT);
-\draw (FLT) -- (BLT);
-\draw (FRT) -- (BRT);
-%
-% ---------------------------------------------------------------------
-% --- Draw Outer Boundaries (Ultra Thick Lines) ---
-% ---------------------------------------------------------------------
-%
-% Front Face U-Shape
-\draw (FLT) -- (FLB) -- (FRB) -- (FRT);
-%
-% Moving Lid Plate
-\draw (LidFL) -- (LidFR) -- (LidBR) -- (LidBL) -- cycle;
-%
-% ---------------------------------------------------------------------
-% --- Coordinate Axes ---
-% ---------------------------------------------------------------------
-%
-\draw[->] (C) -- ++(0.25*\L,0,0) node[above] {$x$};
-\draw[->] (C) -- ++(0,0.25*\L,0) node[left] {$y$};
-\draw[->] (C) -- ++(0,0,0.25*\L) node[above left] {$z$};
-%
-% ---------------------------------------------------------------------
-% --- Labels & Dimension Lines ---
-% ---------------------------------------------------------------------
-%
-% Base Width (L_x)
-\draw[<->, thick] (0, -0.1*\L, \L) -- (\L, -0.1*\L, \L) node[midway, below] {$L_{x}$};
-%
-% Right Height (L_y)
-\draw[<->, thick] (-0.1*\L, 0, \L) -- (-0.1*\L, \L, \L) node[midway, left] {$L_{y}$};
-%
-% Right Depth (L_z)
-\draw[<->, thick] (\L+0.1*\L, 0, \L) -- (\L+0.1*\L, 0, 0) node[midway, below right=-2pt] {$L_{z}$};
-%
-% Lid Velocity Vector
-\draw[->, thick] (0.25*\L, \L, 0.5*\L) -- (0.75*\L, \L, 0.5*\L) node[midway, above] {$u_{\infty}$};
-%
+    %
+    % ---------------------------------------------------------------------
+    % --- Parameters ---
+    % ---------------------------------------------------------------------
+    \def\L{4}     % Characteristic length of the cavity
+    \coordinate (C) at (0.5*\L,0.5*\L,1*\L);
+    % ---------------------------------------------------------------------
+    % --- Coordinates ---
+    % ---------------------------------------------------------------------
+    % Origin / Back Face (z=0)
+    \coordinate (O)   at (0,0,0);         % Back-Left-Bottom (Origin)
+    \coordinate (BRB) at (\L,0,0);        % Back-Right-Bottom
+    \coordinate (BRT) at (\L,\L,0);       % Back-Right-Top
+    \coordinate (BLT) at (0,\L,0);        % Back-Left-Top
+    %
+    % Front Face (z=L)
+    \coordinate (FLB) at (0,0,\L);        % Front-Left-Bottom
+    \coordinate (FRB) at (\L,0,\L);       % Front-Right-Bottom
+    \coordinate (FRT) at (\L,\L,\L);      % Front-Right-Top
+    \coordinate (FLT) at (0,\L,\L);       % Front-Left-Top
+    %
+    % Moving Lid Corners
+    \coordinate (LidFL) at (0, \L, \L);   % Front-Left
+    \coordinate (LidFR) at (\L, \L, \L);  % Front-Right
+    \coordinate (LidBR) at (\L, \L, 0);   % Back-Right
+    \coordinate (LidBL) at (0, \L, 0);    % Back-Left
+    %
+    % ---------------------------------------------------------------------
+    % --- Draw Cavity ---
+    % ---------------------------------------------------------------------
+    %
+    % Back wall and depth edges
+    \draw (O) -- (BRB) -- (BRT);
+    \draw (O) -- (BLT);
+    \draw (O) -- (FLB);
+    \draw (BRB) -- (FRB);
+    %
+    % Top cavity opening (hidden under lid)
+    \draw (BLT) -- (BRT);
+    \draw (FLT) -- (BLT);
+    \draw (FRT) -- (BRT);
+    %
+    % ---------------------------------------------------------------------
+    % --- Draw Outer Boundaries (Ultra Thick Lines) ---
+    % ---------------------------------------------------------------------
+    %
+    % Front Face U-Shape
+    \draw (FLT) -- (FLB) -- (FRB) -- (FRT);
+    %
+    % Moving Lid Plate
+    \draw (LidFL) -- (LidFR) -- (LidBR) -- (LidBL) -- cycle;
+    %
+    % ---------------------------------------------------------------------
+    % --- Coordinate Axes ---
+    % ---------------------------------------------------------------------
+    %
+    \draw[->] (C) -- ++(0.25*\L,0,0) node[above] {$x$};
+    \draw[->] (C) -- ++(0,0.25*\L,0) node[left] {$y$};
+    \draw[->] (C) -- ++(0,0,0.25*\L) node[above left] {$z$};
+    %
+    % ---------------------------------------------------------------------
+    % --- Labels & Dimension Lines ---
+    % ---------------------------------------------------------------------
+    %
+    % Base Width (L_x)
+    \draw[<->, thick] (0, -0.1*\L, \L) -- (\L, -0.1*\L, \L) node[midway, below] {$L_{x}$};
+    %
+    % Right Height (L_y)
+    \draw[<->, thick] (-0.1*\L, 0, \L) -- (-0.1*\L, \L, \L) node[midway, left] {$L_{y}$};
+    %
+    % Right Depth (L_z)
+    \draw[<->, thick] (\L+0.1*\L, 0, \L) -- (\L+0.1*\L, 0, 0) node[midway, below right=-2pt] {$L_{z}$};
+    %
+    % Lid Velocity Vector
+    \draw[->, thick] (0.25*\L, \L, 0.5*\L) -- (0.75*\L, \L, 0.5*\L) node[midway, above] {$u_{\infty}$};
+    %
 \end{tikzpicture}
 \end{document}
