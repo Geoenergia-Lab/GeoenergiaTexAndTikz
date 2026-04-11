@@ -5,21 +5,16 @@
 \usepackage{bm}
 \usepackage[utf8]{inputenc}
 \usepackage{pgfplots}
-%\usepackage[sfdefault]{roboto}
 \usepgfplotslibrary{fillbetween}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, positioning, calc}
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{arrows.meta}
 %
+\begin{document}
 \definecolor{iceblue}{RGB}{0,180,225}
 \definecolor{darkiceblue}{RGB}{0,120,150}
 \definecolor{verydarkiceblue}{RGB}{0,60,75}
-%
-%\definecolor{verydarkiceblue}{RGB}{5,75,40}
-%\definecolor{darkiceblue}{RGB}{20,155,85}
-%\definecolor{iceblue}{RGB}{209,229,217}
-%
 \definecolor{purewhite}{RGB}{255,255,255}
 \pgfdeclareverticalshading{icefade-gamma}{50bp}
 {
@@ -34,7 +29,6 @@
   color(50bp)=(darkiceblue)
 }
 %
-\begin{document}
 \begin{tikzpicture}[scale=1]
   \begin{axis}[
       hide axis,
