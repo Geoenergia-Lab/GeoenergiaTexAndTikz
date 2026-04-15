@@ -10,11 +10,11 @@ This repository contains the **TikZ source code** for plots, figures, and diagra
 
 ## Preview of included figures
 
-Here is an example generated from `Tikz/CollisionStreamingDiagram.tex` (LBM collision and streaming, D2Q9):
+Here is an example generated from `Tikz/CollisionStreamingSteps.tex` (LBM collision and streaming, D2Q9):
 
 ![LBM collision and streaming (preview)](Figs/CollisionStreamingSteps.png)
 
-> ⚠️ The image above is just a preview. **To use this figure in your own work**, copy the source code from `Tikz/CollisionStreamingDiagram.tex` into your document or use `\input{Tikz/CollisionStreamingDiagram.tex}` (after loading required packages).
+> ⚠️ The image above is just a preview. **To use this figure in your own work**, copy the source code from `Tikz/CollisionStreamingSteps.tex` into your document or use `\input{Tikz/CollisionStreamingSteps.tex}` (after loading required packages).
 
 ## Getting started on Overleaf
 
