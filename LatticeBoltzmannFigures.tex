@@ -88,8 +88,40 @@
         \caption{Push streaming: each thread reads populations from its own node and writes them to neighbouring nodes. Reads are coalesced but writes are non-coalesced.}
         \label{fig:push_streaming}
     \end{subfigure}
-    \caption{Comparison of pull and push streaming patterns for the lattice Boltzmann method. Black arrows indicate the direction of data transfer during the streaming step. Tikz source code: Tikz/LBM/streamingStrategyDiagram.tex}
+    \caption{Comparison of pull and push streaming patterns for the lattice Boltzmann method. Black arrows indicate the direction of data transfer during the streaming step. Tikz source code: Tikz/LBM/pullStreamingRead, Tikz/LBM/pullStreamingWrite, Tikz/LBM/pushStreamingRead, Tikz/pushStreamingWrite}
     \label{fig:StreamingStrategies}
+\end{figure}
+%
+\begin{subequations}\label{eq:Moments}
+\begin{gather}
+    \rho = \sum_i f_i \\
+    \rho\,\overline{\boldsymbol{u}} = \sum_i f_i \boldsymbol{c}_i \\
+    \rho\,\boldsymbol{m} = \sum_i f_i \left( \boldsymbol{c}_i \boldsymbol{c}_i - \frac{1}{a_{s}^{2}} \boldsymbol{I} \right)
+\end{gather}
+\end{subequations}
+%
+\begin{equation}\label{eq:Regularization}
+    \widehat{f}_i = \rho \, w_i \left(1 + a_{s}^{2} \, \boldsymbol{c}_i \cdot \boldsymbol{u} + \frac{1}{2} a_{s}^{4} \left(\boldsymbol{c}_i \, \boldsymbol{c}_i : \boldsymbol{m} - \frac{1}{a_{s}^{2}} \mathrm{tr}\left(\boldsymbol{m}\right) \right) \right)
+\end{equation}
+%
+\begin{equation}\label{eq:Streaming}
+    f_i\left(\boldsymbol{r} + \boldsymbol{c}_i \, \Delta {t}, \, t + \Delta {t}\right) = \widehat{f}_i\left(\boldsymbol{r}, \, t\right)
+\end{equation}
+%
+\begin{subequations}\label{eq:Collision}
+\begin{gather}
+    \rho^* = \sum_i \widehat{f}_i \\
+    \rho^* \, \boldsymbol{u}^* = \rho \, \boldsymbol{u}
+    \\
+    \rho^* \, \boldsymbol{m}^* = \left(1 - \omega\right) \rho^* \, \boldsymbol{m} + \omega \, \rho \, \boldsymbol{u} \, \boldsymbol{u}
+\end{gather}
+\end{subequations}
+%
+\begin{figure}[hbt]
+    \centering
+    \input{Tikz/LBM/MomentBasedAlgorithm}
+    \caption{Moment-based lattice Boltzmann solution algorithm with IRBC boundary treatment. Tikz source code: Tikz/LBM/MomentBasedAlgorithm}
+    \label{fig:MomentBasedAlgorithm}
 \end{figure}
 %
 %\lipsum

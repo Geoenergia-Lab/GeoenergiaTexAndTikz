@@ -32,6 +32,26 @@
     \addlegendentry{#2}
 }
 %
+\newcommand{\addPerformancePoint}[2]
+{
+    \draw plot[
+        only marks,
+        mark = o,
+        mark size = 3pt,
+        mark options = {color = #1}
+    ] coordinates {(#2)};
+}
+%
+% Make some nice colours available to use
+\definecolor{ApplePalette1}{RGB}{97, 187, 70}
+\definecolor{ApplePalette2}{RGB}{253, 184, 39}
+\definecolor{ApplePalette3}{RGB}{245, 130, 31}
+\definecolor{ApplePalette4}{RGB}{224, 58, 62}
+\definecolor{ApplePalette5}{RGB}{150, 61, 151}
+\definecolor{ApplePalette6}{RGB}{0, 157, 220}
+\definecolor{ApplePalette7}{RGB}{255, 105, 180}
+\definecolor{ApplePalette8}{RGB}{107, 194, 213}
+%
 \begin{axis}[
     width = \textwidth,
     height = 0.5\textwidth,
@@ -57,13 +77,13 @@
     minor grid style = {dashed, gray!20},
     samples = 100,
     no marks,
-    legend pos = north west,
+    legend pos = south east,
     legend cell align = left
 ]
 %
-\addRoofline{black}{RTX 4090}{82.6}{1.008}
-\addRoofline{blue}{RTX A4000}{19.17}{0.448}
-\addRoofline{red}{RTX 5090}{104.8}{1.792}
+\addRoofline{black}{RTX 5090}{104.8}{1.792}
+\addRoofline{ApplePalette6}{RTX 4090}{82.6}{1.008}
+\addRoofline{ApplePalette4}{RTX A4000}{19.17}{0.448}
 %
 \end{axis}
 \end{tikzpicture}

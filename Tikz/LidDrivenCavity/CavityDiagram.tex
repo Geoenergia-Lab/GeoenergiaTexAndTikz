@@ -15,7 +15,7 @@
     % --- Parameters ---
     % ---------------------------------------------------------------------
     \def\L{4}     % Characteristic length of the cavity
-    \coordinate (C) at (0.5*\L,0.5*\L,1*\L);
+    \coordinate (C) at (0,0,0);
     % ---------------------------------------------------------------------
     % --- Coordinates ---
     % ---------------------------------------------------------------------
@@ -84,7 +84,7 @@
     \draw[<->, thick] (\L+0.1*\L, 0, \L) -- (\L+0.1*\L, 0, 0) node[midway, below right=-2pt] {$L_{z}$};
     %
     % Lid Velocity Vector
-    \draw[->, thick] (0.25*\L, \L, 0.5*\L) -- (0.75*\L, \L, 0.5*\L) node[midway, above] {$u_{\infty}$};
+    \draw[->, thick] (0.25*\L, \L, 0.5*\L) -- (0.75*\L, \L, 0.5*\L) node[midway, above] {$u_{L}$};
     %
 \end{tikzpicture}
 \end{document}

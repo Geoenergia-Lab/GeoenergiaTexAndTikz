@@ -1,0 +1,79 @@
+\documentclass[tikz,border=5pt]{standalone}
+\usepackage[portuguese,english]{babel}
+% Useful packages
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{cleveref}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta, shapes.geometric}
+%
+\begin{document}
+\definecolor{ApplePalette1}{RGB}{97, 187, 70}
+\definecolor{ApplePalette2}{RGB}{253, 184, 39}
+\definecolor{ApplePalette3}{RGB}{245, 130, 31}
+\definecolor{ApplePalette4}{RGB}{224, 58, 62}
+\definecolor{ApplePalette5}{RGB}{150, 61, 151}
+\definecolor{ApplePalette6}{RGB}{0, 157, 220}
+\definecolor{ApplePalette7}{RGB}{255, 105, 180}
+\definecolor{ApplePalette8}{RGB}{107, 194, 213}
+\begin{tikzpicture}[
+    node distance=64pt, 
+    % Define block styles
+    process/.style = {rectangle, draw, fill = ApplePalette6!50, text width = 212pt, text centered, rounded corners, minimum height=34pt, font=\small},
+    splitprocess/.style = {rectangle, draw, fill = ApplePalette6!50, text width = 160pt, text centered, rounded corners, minimum height=34pt, font=\small},
+    decision/.style = {diamond, aspect=2.2, draw, fill = ApplePalette2!50, text width = 75pt, text centered, inner sep = 1pt, font=\small},
+    io/.style = {trapezium, trapezium left angle = 75, trapezium right angle = 105, draw, fill = ApplePalette1!50, text width = 198pt, text centered, minimum height = 34pt, font = \small},
+    arrow/.style = {thick, ->, >=stealth}
+]
+
+    % Nodes
+    \node (read) [io] {\textbf{Read from global memory} \\
+    $\rho$, $\boldsymbol{u}$, $\boldsymbol{m}$};
+    
+    \node (regularize) [process, below of=read] {\textbf{Regularization (reconstruct populations)} \\
+    $\widehat{f}_i$ via \cref{eq:Regularization}};
+    
+    \node (stream) [process, below of=regularize] {\textbf{Shared memory streaming} \\
+    $f_{i}$ via \cref{eq:Streaming}};
+    
+    % --- The Decision Node ---
+    \node (is_boundary) [decision, below of=stream] {\textbf{At boundary?}};
+    
+    % --- The Branch ---
+    \node (moments) [splitprocess, below of=is_boundary, xshift=-115pt] {\textbf{Calculate post-streaming moments} \\
+    $\rho, \rho\,\boldsymbol{u}, \rho\,\boldsymbol{m}$ via \cref{eq:Moments}};
+    
+    \node (bc) [splitprocess, below of=is_boundary, xshift=115pt] {\textbf{Apply boundary conditions} \\
+    (IRBC framework)};
+    
+    % --- Re-join ---
+    \node (collide) [process, below of=moments, xshift=115pt] {\textbf{Moment-space collision} \\
+    Calculate $\rho^*, \boldsymbol{u}^*, \boldsymbol{m}^*$ via \cref{eq:Collision}};
+    
+    \node (write) [io, below of=collide] {\textbf{Write to global memory} \\
+    $\rho^*$, $\boldsymbol{u}^*$, $\boldsymbol{m}^*$};
+
+    % Arrows
+    \draw [arrow] (read) -- (regularize);
+    \draw [arrow] (regularize) -- (stream);
+    \draw [arrow] (stream) -- (is_boundary);
+    
+    % Forking arrows from the decision diamond
+    \draw [arrow] (is_boundary.west) -| node[above, near start] {No} (moments.north);
+    \draw [arrow] (is_boundary.east) -| node[above, near start] {Yes} (bc.north);
+    
+    % Joining arrows (perfect symmetrical merge using a fixed coordinate)
+    \coordinate (merge) at ([yshift=15pt]collide.north);
+    \draw [thick] (moments.south) |- (merge);
+    \draw [thick] (bc.south) |- (merge);
+    \draw [arrow] (merge) -- (collide.north);
+    
+    \draw [arrow] (collide) -- (write);
+
+    % Feedback loop returning to the start
+    \draw [arrow] (write.east) -- ++(72pt,0) |- (read.east);
+
+\end{tikzpicture}
+\end{document}
