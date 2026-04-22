@@ -1,0 +1,38 @@
+\clearpage
+\subsection{Miscellaneous}
+%
+\begin{figure}[hbt!]
+    \centering
+    \input{Tikz/Oil/DropletSizeDistribution}
+    \caption{Volume droplet size distributions for an arbitrary set of oils. TikZ source code: TikZ/Oil/DropletSizeDistribution.tex}
+    \label{fig:DropletSizeDistribution}
+\end{figure}
+%
+\begin{figure}[hbt!]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        title={2D Gaussian with Colorbar},
+        axis equal image,
+        clip=true,
+        xlabel={$x$},
+        ylabel={$y$},
+        view={0}{90},
+        colorbar,
+        colormap/viridis,
+        colorbar style={title={$z$ value}, ylabel={Intensity}}
+        ]
+        
+        % A sample surface plot
+        \addplot3[
+        surf,
+        shader=interp,
+        domain=-2:2,
+        domain y=-2:2,
+        samples=30] {exp(-x^2-y^2)};
+        
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Two-dimensional Gaussian.}
+    \label{fig:Gaussian2D}
+\end{figure}%

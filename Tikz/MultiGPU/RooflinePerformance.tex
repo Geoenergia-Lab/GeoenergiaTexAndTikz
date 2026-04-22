@@ -3,33 +3,56 @@
 \usepackage{bm}
 \usepackage[utf8]{inputenc}
 \usepackage{pgfplots}
+\usepackage{pgfplotstable}
 \usepackage{siunitx}
+%\usepackage{csvsimple}
 \pgfplotsset{compat=1.18}
-\usetikzlibrary{arrows.meta}
+\usetikzlibrary{arrows.meta, calc}
 %
 \begin{document}
 \begin{tikzpicture}[scale=1]
 %
 % Axis limits of the plot
-\def\xMin{0.1}
+\def\xMin{1}
 \def\xMax{1000}
-\def\yMin{0.01}
+\def\yMin{0.1}
 \def\yMax{1000}
 %
 % Add the definition of FLOP to siunitx
 \DeclareSIUnit\flop{FLOP}
-%
-% Generic command to add a GPU roofline plot
-% Arg 1: Line colour
-% Arg 2: GPU name
-% Arg 3: Peak FLOP/s in TB/s
-% Arg 4: Memory bandwidth in TB/s
-\newcommand{\addRoofline}[4]
-{
+\newcommand{\addRoofline}[4]{%
     \pgfmathsetmacro{\ridgeX}{#3 / #4}
-    \draw[#1] (\xMin, \xMin * #4) -- (\ridgeX, #3) -- (\xMax, #3);
+    
+    % BAKE THE LINE: Force \ridgeX, #3, and #4 into literal numbers
+    % \noexpand prevents \draw, \xMin, and \xMax from expanding too early
+    \edef\queueDraw{%
+        \noexpand\draw[#1, thick] (\noexpand\xMin, \noexpand\xMin * #4) -- (\ridgeX, #3) -- (\noexpand\xMax, #3);
+    }%
+    \queueDraw % Put the hard-coded math onto the pgfplots to-do list
+    
     \addlegendimage{line legend, #1}
     \addlegendentry{#2}
+}
+%
+% 2. The CSV wrapper
+\newcommand{\rooflineFromCSV}[3]{%
+  \pgfplotstableread[col sep=comma]{#3}{\tempgpudata}%
+  
+  \pgfplotstablegetelem{0}{PeakFLOPs}\of{\tempgpudata}%
+  \xdef\gpuPeakFLOPs{\pgfplotsretval}%
+  
+  \pgfplotstablegetelem{0}{Bandwidth}\of{\tempgpudata}%
+  \xdef\gpuBandwidth{\pgfplotsretval}%
+  
+  % BAKE THE NUMBERS: Force variables into literal numbers before calling
+  \edef\executeRoofline{%
+      \noexpand\addRoofline{\unexpanded{#1}}{\unexpanded{#2}}{\gpuPeakFLOPs}{\gpuBandwidth}%
+  }%
+  \executeRoofline % Execute the baked command
+  
+  % Garbage collection is now 100% safe
+  \global\let\gpuPeakFLOPs\undefined
+  \global\let\gpuBandwidth\undefined
 }
 %
 \newcommand{\addPerformancePoint}[2]
@@ -40,6 +63,38 @@
         mark size = 3pt,
         mark options = {color = #1}
     ] coordinates {(#2)};
+    \draw plot[
+        only marks,
+        mark = *,
+        mark size = 1pt,
+        mark options = {color = #1}
+    ] coordinates {(#2)};
+}
+\newcommand{\perfPointFromCSV}[2]{%
+  % #1 : Color
+  % #2 : Path to CSV file
+
+  % 1. Load the CSV into a local macro
+  \pgfplotstableread[col sep=comma]{#2}{\tempgpudata}%
+  
+  % 2. Extract Arithmetic Intensity (AI)
+  \pgfplotstablegetelem{0}{AI}\of{\tempgpudata}%
+  \xdef\gpuAI{\pgfplotsretval}%
+  
+  % 3. Extract Performance (P)
+  \pgfplotstablegetelem{0}{P}\of{\tempgpudata}%
+  \xdef\gpuPerf{\pgfplotsretval}%
+  
+  % 4. BAKE THE NUMBERS: Force variables into literal text.
+  % This safely injects "3.02, 2.72" as argument #2 into your macro
+  \edef\executePerfPoint{%
+      \noexpand\addPerformancePoint{\unexpanded{#1}}{\gpuAI, \gpuPerf}%
+  }%
+  \executePerfPoint
+  
+  % 5. Garbage collection
+  \global\let\gpuAI\undefined
+  \global\let\gpuPerf\undefined
 }
 %
 % Make some nice colours available to use
@@ -53,8 +108,8 @@
 \definecolor{ApplePalette8}{RGB}{107, 194, 213}
 %
 \begin{axis}[
-    width = \textwidth,
-    height = 0.5\textwidth,
+    width = 0.85\textwidth,
+    height = 0.425\textwidth,
     xmode = log,
     ymode = log,
     clip = true,
@@ -63,10 +118,11 @@
     xmax = \xMax,
     ymin = \yMin,
     ymax = \yMax,
-    xtick = {0.1, 1, 10, 100, 1000},
-    ytick = {0.01, 0.1, 1, 10, 100, 1000},
+    axis lines = box,
+    axis line style = {-},
+    xtick = {1, 10, 100, 1000},
+    ytick = {0.1, 1, 10, 100, 1000},
     % ------------------------------------
-    axis lines = left,
     xlabel = {Arithmetic intensity [\SI{}{\flop\per\byte}]},
     ylabel = {Performance [\SI{}{\tera\flop\per\second}]},
     xlabel style = {font=\normalsize, below},
@@ -84,7 +140,15 @@
 \addRoofline{black}{RTX 5090}{104.8}{1.792}
 \addRoofline{ApplePalette6}{RTX 4090}{82.6}{1.008}
 \addRoofline{ApplePalette4}{RTX A4000}{19.17}{0.448}
+%\rooflineFromCSV{black}{RTX 5090}{Data/profile/RTX_5090/ProfileData.csv}
+%\rooflineFromCSV{ApplePalette6}{RTX 4090}{Data/profile/RTX_4090/ProfileData.csv}
+%\rooflineFromCSV{ApplePalette1}{RTX 4070-M}{Data/profile/RTX_4070-M/ProfileData.csv}
+%\rooflineFromCSV{ApplePalette4}{RTX A4000}{Data/profile/RTX_A4000/ProfileData.csv}
+%
+%\perfPointFromCSV{ApplePalette6}{Data/profile/RTX_4090/ProfileData.csv}
+%\perfPointFromCSV{ApplePalette1}{Data/profile/RTX_4070-M/ProfileData.csv}
 %
 \end{axis}
+\path ($ (current axis.center) ! -1 ! (current bounding box.west |- current axis.center) $);
 \end{tikzpicture}
 \end{document}

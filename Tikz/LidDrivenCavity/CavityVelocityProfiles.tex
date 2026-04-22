@@ -7,12 +7,38 @@
 \usepackage{pgfplots}
 \usepackage{tikz}
 \pgfplotsset{compat=1.18}
-\usetikzlibrary{arrows.meta}
+\usetikzlibrary{arrows.meta, calc}
 \begin{document}
+\newcommand{\plotUyN}[3]{%
+  \addplot [#2, #3] table [
+    ignore chars={\"},
+    x expr=(\thisrow{Points:0} - 0.5) * 2,
+    y expr=\thisrow{UMean_y} / (3 * ((#1 - 1) / 10000)),
+    col sep=comma
+  ] {Data/Mesh_#1/uyNoDuplicates.csv};
+}
+%
+\newcommand{\plotUxN}[3]{%
+\addplot [#2, #3] table [
+    ignore chars={\"},
+    col sep=comma,
+    y expr=(\thisrow{Points:1} - 0.5) * 2,
+    x expr=\thisrow{UMean_x} / (3 * ((#1 - 1) / 10000)),
+] {Data/Mesh_#1/uxNoDuplicates.csv};
+}%
+
+\definecolor{ApplePalette1}{RGB}{97, 187, 70}
+\definecolor{ApplePalette2}{RGB}{253, 184, 39}
+\definecolor{ApplePalette3}{RGB}{245, 130, 31}
+\definecolor{ApplePalette4}{RGB}{224, 58, 62}
+\definecolor{ApplePalette5}{RGB}{150, 61, 151}
+\definecolor{ApplePalette6}{RGB}{0, 157, 220}
+\definecolor{ApplePalette7}{RGB}{255, 105, 180}
+\definecolor{ApplePalette8}{RGB}{107, 194, 213}
 \begin{tikzpicture}[scale=1]
     \begin{axis}[
-        width = \textwidth,
-        height = \textwidth,
+        width = 0.85\textwidth,
+        height = 0.85\textwidth,
         domain = -1:1,
         xmin = -1,
         xmax = 1,
@@ -24,8 +50,8 @@
         yticklabels = {-1, -0.5, 0, 0.5, 1},
         axis lines = box,
         axis line style = {-},
-        xlabel = {$\left<u_{x}\right>$},
-        ylabel = {$\left<u_{y}\right>$},
+        xlabel = {$x,\,\left<u_{x}\right>$},
+        ylabel = {$y,\,\left<u_{y}\right>$},
         xlabel style = {font=\normalsize, below},
         ylabel style = {font=\normalsize, above, rotate=0},
         tick label style = {font=\normalsize},
@@ -34,11 +60,39 @@
         samples = 1000,
         smooth,
         no marks,
-        legend pos = north east
+        legend pos = north west
         ]
-        \addplot [black] table [x=x, y=y, col sep=comma] {Data/uy_cx_10000_1.csv};
-        \addplot [black] table [x=x, y=y, col sep=comma] {Data/ux_cy_10000_1.csv};
-        \addlegendentry{Prasad \& Koseff}
+        % Plot experimental u_y
+        \addplot [
+            only marks,
+            mark=*,
+            mark size=2pt,
+            mark options={fill=ApplePalette6, draw=black}, 
+        ] table [x=x, y=y, col sep=comma] {Data/PK/uy.csv};
+        % Plot experimental u_x
+        \addplot [
+            only marks,
+            mark=*,
+            mark size=2pt,
+            mark options={fill=ApplePalette4, draw=black}, 
+        ] table [x=x, y=y, col sep=comma] {Data/PK/ux.csv};
+        %
+        %\plotUyN{128}{ApplePalette6}{solid};
+        %\plotUxN{128}{ApplePalette4}{solid};
+        %\plotUyN{256}{ApplePalette6}{dashed};
+        %\plotUxN{256}{ApplePalette4}{dashed};
+        %\plotUyN{768}{ApplePalette6}{densely dotted};
+        %\plotUxN{768}{ApplePalette4}{densely dotted};
+        %
+        \addlegendentry{P\&K}
+        \addlegendentry{P\&K}
+        %\addlegendentry{$n_x = 128$}
+        %\addlegendentry{$n_y = 128$}
+        %\addlegendentry{$n_x = 256$}
+        %\addlegendentry{$n_y = 256$}
+        %\addlegendentry{$n_x = 768$}
+        %\addlegendentry{$n_y = 768$}
     \end{axis}
+    \path ($ (current axis.center) ! -1 ! (current bounding box.west |- current axis.center) $);
 \end{tikzpicture}
 \end{document}
