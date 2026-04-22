@@ -1,0 +1,49 @@
+\documentclass[tikz,border=10pt]{standalone}
+
+% Define the specific coral/pink color from the image
+\definecolor{geocoral}{HTML}{FC6B6B}
+
+\begin{document}
+\begin{tikzpicture}
+
+  % Style for the thick stems
+  \tikzset{
+    stem/.style={geocoral, line width=11pt, line join=round}
+  }
+
+  % 1. Base / Root line
+  % Curves gently upwards and back down
+  \draw[stem] (0.5, -0.2) .. controls (2.5, 0.5) and (4.0, 0.4) .. (5.0, -0.2);
+
+  % 2. Main central stem
+  % Shoots up from the base and curves to the right
+  \draw[stem] (2.5, 0.3) .. controls (3.3, 1.8) and (5.0, 2.8) .. (6.5, 3.5);
+
+  % 3. Left leaf branch
+  % Branches off the main stem upwards
+  \draw[stem] (2.5, 0.3) .. controls (3.5, 2.0) .. (3.5, 3.5);
+
+  % 4. Bottom right leaf branch
+  % Short connecting stem for the lower right leaf
+  \draw[stem] (4.3, 2.5) .. controls (4.8, 2.5) .. (5.3, 2.4);
+
+  % 5. Left Leaf
+  % Tall, angled slightly left, rounded on the left, flatter on the right
+  \fill[geocoral] (3.5, 3.5)
+    .. controls (1.7, 5.0) and (2.0, 7.5) .. (3.0, 8.0)
+    .. controls (3.8, 6.5) and (4.0, 4.5) .. (3.5, 3.5);
+
+  % 6. Top Right Leaf
+  % Points up and to the right
+  \fill[geocoral] (6.5, 3.5)
+    .. controls (7.0, 5.2) and (8.8, 6.3) .. (10.0, 6.0)
+    .. controls (9.5, 4.3) and (8.0, 3.2) .. (6.5, 3.5);
+
+  % 7. Bottom Right Leaf
+  % Points downwards and to the right
+  \fill[geocoral] (5.3, 2.4)
+    .. controls (6.1, 3.6) and (8.3, 2.5) .. (9.2, 0.8)
+    .. controls (7.8, -0.2) and (6.2, 0.8) .. (5.3, 2.4);
+
+\end{tikzpicture}
+\end{document}
