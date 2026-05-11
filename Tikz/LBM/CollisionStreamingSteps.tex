@@ -1,4 +1,4 @@
-\documentclass[tikz,border=5pt]{standalone}
+\documentclass[tikz,border=0pt]{standalone}
 \usepackage[portuguese,english]{babel}
 %
 % Useful packages
@@ -10,7 +10,9 @@
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{arrows.meta}
 \begin{document}
-\begin{tikzpicture}[scale=0.6, >=Stealth]
+\tikzset{FixedStealth/.tip = {Stealth[length=6pt, width=4pt]}}
+\tikzset{>=FixedStealth}
+\begin{tikzpicture}[scale=0.6]
     \useasboundingbox (-13, -4.5) rectangle (13, 4.5);
     %
     \node[align=center] at (-10,4) {Pre-collision\\$f_{i}\left(\boldsymbol{x},\,t\right)$};

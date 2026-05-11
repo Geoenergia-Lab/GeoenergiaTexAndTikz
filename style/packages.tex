@@ -1,25 +1,5 @@
-%
-% MODELO GEOENERGIA LAB 2025
-% Você pode alterar diretamente:
-% - Idioma (english/portuguese)
-% - Modelo de citação e referência (ABNT ou padrão natlib)
-%
-%--------------------------------------------------------------
-% Idioma / language:
 \usepackage[portuguese,english]{babel}
-% O segundo idioma é o que define (ex. nesse caso: inglês)
-%
-% Citação (selecione entre as duas opções):
-% \usepackage[authoryear]{natbib} % Pacote para citações no estilo estrangeiro (autor-data ou numérico)
-% \usepackage[abnt-emphasize=bf,abnt-and-type=e,abnt-etal-text=default]{abntex2cite} % Pacote para citações ABNT
-%
-% caso queira de acordo com ABNT deixe comentado a biblioteca estrangeira e tammbém o pacote. Para citação use \citeoline{}. Veja REFERÊNCIAS no final do script.
-%
-%--------------------------------------------------------------
-% Set page size and margins
 \usepackage[letterpaper, top=56pt, bottom=56pt, left=85pt, right=85pt, marginparwidth=50pt]{geometry}
-%
-% Useful packages
 \usepackage{lipsum}
 \usepackage{amsmath}
 \usepackage{bm}
@@ -45,9 +25,13 @@
 \usepackage{pgfplots}
 \usepackage{standalone}
 \usepackage{tikz}
+\usepackage{tcolorbox}
 \usepackage{tikz-3dplot}
+\usepackage[useregional, calc]{datetime2}
+\usepackage{indentfirst}
+\usepackage{xspace}
 \pgfplotsset{compat=1.18}
 \usepgfplotslibrary{fillbetween}
-\usetikzlibrary{shapes.geometric, positioning, calc, arrows.meta}
-\usepackage[useregional, calc]{datetime2}
-%
+\usetikzlibrary{shapes.geometric, positioning, calc, arrows.meta, patterns, decorations.pathreplacing}
+\newcommand{\refcite}[1]{ref.~\cite{#1}}
+\newcommand{\Refcite}[1]{Ref.~\cite{#1}}

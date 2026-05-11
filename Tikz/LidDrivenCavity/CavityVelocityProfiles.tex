@@ -1,4 +1,4 @@
-\documentclass[tikz,border=5pt]{standalone}
+\documentclass[tikz,border=0pt]{standalone}
 \usepackage[portuguese,english]{babel}
 %
 % Useful packages
@@ -9,6 +9,23 @@
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{arrows.meta, calc}
 \begin{document}
+\newcommand{\plotUyN}[3]{%
+  \addplot [#2, #3] table [
+    ignore chars={\"},
+    x expr=(\thisrow{Points:0} - 0.5) * 2,
+    y expr=\thisrow{UMean_y},
+    col sep=comma
+  ] {Data/Mesh_#1/uyNoDuplicates.csv};
+}
+%
+\newcommand{\plotUxN}[3]{%
+\addplot [#2, #3] table [
+    ignore chars={\"},
+    col sep=comma,
+    y expr=(\thisrow{Points:1} - 0.5) * 2,
+    x expr=\thisrow{UMean_x},
+] {Data/Mesh_#1/uxNoDuplicates.csv};
+}
 %
 \ifdefined\xVelocity
 \else
@@ -35,10 +52,10 @@
         xmax = 1,
         ymin = -1,
         ymax = 1,
-        xtick = {-1, -0.5  0, 0.5, 1},
-        xticklabels = {-1, -0.5  0, 0.5, 1},
-        ytick = {-1, -0.5  0, 0.5, 1},
-        yticklabels = {-1, -0.5  0, 0.5, 1},
+        xtick = {-1, -0.5, 0, 0.5, 1},
+        xticklabels = {-1, -0.5, 0, 0.5, 1},
+        ytick = {-1, -0.5, 0, 0.5, 1},
+        yticklabels = {-1, -0.5, 0, 0.5, 1},
         axis lines = box,
         axis line style = {-},
         xlabel = {$x,\,\left<\xVelocity\right>$},
@@ -67,6 +84,9 @@
             mark size=2pt,
             mark options={fill=ApplePalette4, draw=black}, 
         ] table [x=x, y=y, col sep=comma] {Data/PK/ux.csv};
+        %
+        \addlegendentry{P\&K}
+        \addlegendentry{P\&K}
     \end{axis}
     \path ($ (current axis.center) ! -1 ! (current bounding box.west |- current axis.center) $);
 \end{tikzpicture}

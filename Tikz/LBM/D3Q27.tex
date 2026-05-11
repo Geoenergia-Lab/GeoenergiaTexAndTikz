@@ -1,4 +1,4 @@
-\documentclass[tikz,border=5pt]{standalone}
+\documentclass[tikz,border=0pt]{standalone}
 \usepackage[portuguese,english]{babel}
 %
 % Useful packages
@@ -11,7 +11,9 @@
 \usetikzlibrary{arrows.meta}
 \begin{document}
 \tdplotsetmaincoords{75}{30}
-\begin{tikzpicture}[scale=1, >=Stealth, tdplot_main_coords]
+\tikzset{FixedStealth/.tip = {Stealth[length=6pt, width=4pt]}}
+\tikzset{>=FixedStealth}
+\begin{tikzpicture}[scale=1, tdplot_main_coords]
     %
     \def\L{2}
     % ---- 1. Draw the grid (edges of the 2×2×2 cube subdivided) ----
@@ -56,7 +58,7 @@
     %
     % ---- Coordinate system (placed at a corner for clarity) ----
     %
-    \begin{scope}[thick, ->, >=Stealth]
+    \begin{scope}[thick, ->]
         \draw (-\L*1.2,-\L*1.2,-\L*1.2) -- ++(\L*0.8,0,0) node[above] {$x$};
         \draw (-\L*1.2,-\L*1.2,-\L*1.2) -- ++(0,-\L*0.8,0) node[above] {$y$};
         \draw (-\L*1.2,-\L*1.2,-\L*1.2) -- ++(0,0,\L*0.8) node[left] {$z$};

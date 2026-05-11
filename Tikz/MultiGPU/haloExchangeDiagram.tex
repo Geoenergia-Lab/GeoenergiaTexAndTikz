@@ -1,4 +1,4 @@
-\documentclass[tikz,border=5pt]{standalone}
+\documentclass[tikz,border=0pt]{standalone}
 \usepackage[portuguese,english]{babel}
 %
 % Useful packages
@@ -11,6 +11,8 @@
 \usetikzlibrary{arrows.meta}
 %
 \begin{document}
+\tikzset{FixedStealth/.tip = {Stealth[length=6pt, width=4pt]}}
+\tikzset{>=FixedStealth}
 \definecolor{ApplePalette1}{RGB}{97, 187, 70}
 \definecolor{ApplePalette2}{RGB}{253, 184, 39}
 \definecolor{ApplePalette3}{RGB}{245, 130, 31}
@@ -19,8 +21,8 @@
 \definecolor{ApplePalette6}{RGB}{0, 157, 220}
 \definecolor{ApplePalette7}{RGB}{255, 105, 180}
 \definecolor{ApplePalette8}{RGB}{107, 194, 213}
-\tdplotsetmaincoords{75}{120} % adjust viewing angle
-\begin{tikzpicture}[scale=1,x=28pt, y=28pt, >=Stealth]
+% \tdplotsetmaincoords{75}{120} % adjust viewing angle
+\begin{tikzpicture}[scale=1,x=28pt, y=28pt]
 
     % Define colors to match the image
     \colorlet{colGray}{ApplePalette6!50}

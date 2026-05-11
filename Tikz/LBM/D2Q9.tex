@@ -1,4 +1,4 @@
-\documentclass[tikz,border=5pt]{standalone}
+\documentclass[tikz,border=0pt]{standalone}
 \usepackage[portuguese,english]{babel}
 %
 % Useful packages
@@ -9,7 +9,9 @@
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{arrows.meta}
 \begin{document}
-\begin{tikzpicture}[scale=1, >=Stealth]
+\tikzset{FixedStealth/.tip = {Stealth[length=6pt, width=4pt]}}
+\tikzset{>=FixedStealth}
+\begin{tikzpicture}[scale=1]
   %
   \begin{axis}[
       width = \textwidth,

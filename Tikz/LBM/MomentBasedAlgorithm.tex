@@ -1,4 +1,4 @@
-\documentclass[tikz,border=5pt]{standalone}
+\documentclass[tikz,border=0pt]{standalone}
 \usepackage[portuguese,english]{babel}
 % Useful packages
 \usepackage{bm}
@@ -10,6 +10,14 @@
 \usetikzlibrary{arrows.meta, shapes.geometric}
 %
 \begin{document}
+\ifdefined\VelocityVector
+\else
+  \newcommand{\VelocityVector}{\boldsymbol{u}}
+\fi
+\ifdefined\MomentsTensor
+\else
+  \newcommand{\MomentsTensor}{\mathbf{M}}
+\fi
 \definecolor{ApplePalette1}{RGB}{97, 187, 70}
 \definecolor{ApplePalette2}{RGB}{253, 184, 39}
 \definecolor{ApplePalette3}{RGB}{245, 130, 31}
@@ -18,6 +26,8 @@
 \definecolor{ApplePalette6}{RGB}{0, 157, 220}
 \definecolor{ApplePalette7}{RGB}{255, 105, 180}
 \definecolor{ApplePalette8}{RGB}{107, 194, 213}
+\tikzset{FixedStealth/.tip = {Stealth[length=6pt, width=4pt]}}
+\tikzset{>=FixedStealth}
 \begin{tikzpicture}[
     node distance=64pt, 
     % Define block styles
@@ -30,7 +40,7 @@
 
     % Nodes
     \node (read) [io] {\textbf{Read from global memory} \\
-    $\rho$, $\boldsymbol{u}$, $\boldsymbol{m}$};
+    $\rho$, $\VelocityVector$, $\MomentsTensor$};
     
     \node (regularize) [process, below of=read] {\textbf{Regularization (reconstruct populations)} \\
     $\widehat{f}_i$ via \cref{eq:Regularization}};
@@ -43,37 +53,37 @@
     
     % --- The Branch ---
     \node (moments) [splitprocess, below of=is_boundary, xshift=-115pt] {\textbf{Calculate post-streaming moments} \\
-    $\rho, \rho\,\boldsymbol{u}, \rho\,\boldsymbol{m}$ via \cref{eq:Moments}};
+    $\rho, \rho\,\VelocityVector, \rho\,\MomentsTensor$ via \cref{eq:Moments}};
     
     \node (bc) [splitprocess, below of=is_boundary, xshift=115pt] {\textbf{Apply boundary conditions} \\
     (IRBC framework)};
     
     % --- Re-join ---
     \node (collide) [process, below of=moments, xshift=115pt] {\textbf{Moment-space collision} \\
-    Calculate $\rho^*, \boldsymbol{u}^*, \boldsymbol{m}^*$ via \cref{eq:Collision}};
+    Calculate $\rho^*, \VelocityVector^*, \MomentsTensor^*$ via \cref{eq:Collision}};
     
     \node (write) [io, below of=collide] {\textbf{Write to global memory} \\
-    $\rho^*$, $\boldsymbol{u}^*$, $\boldsymbol{m}^*$};
+    $\rho^*$, $\VelocityVector^*$, $\MomentsTensor^*$};
 
     % Arrows
-    \draw [arrow] (read) -- (regularize);
-    \draw [arrow] (regularize) -- (stream);
-    \draw [arrow] (stream) -- (is_boundary);
+    \draw [->, thick] (read) -- (regularize);
+    \draw [->, thick] (regularize) -- (stream);
+    \draw [->, thick] (stream) -- (is_boundary);
     
     % Forking arrows from the decision diamond
-    \draw [arrow] (is_boundary.west) -| node[above, near start] {No} (moments.north);
-    \draw [arrow] (is_boundary.east) -| node[above, near start] {Yes} (bc.north);
+    \draw [->, thick] (is_boundary.west) -| node[above, near start] {No} (moments.north);
+    \draw [->, thick] (is_boundary.east) -| node[above, near start] {Yes} (bc.north);
     
     % Joining arrows (perfect symmetrical merge using a fixed coordinate)
     \coordinate (merge) at ([yshift=15pt]collide.north);
     \draw [thick] (moments.south) |- (merge);
     \draw [thick] (bc.south) |- (merge);
-    \draw [arrow] (merge) -- (collide.north);
+    \draw [->, thick] (merge) -- (collide.north);
     
-    \draw [arrow] (collide) -- (write);
+    \draw [->, thick] (collide) -- (write);
 
     % Feedback loop returning to the start
-    \draw [arrow] (write.east) -- ++(72pt,0) |- (read.east);
+    \draw [->, thick] (write.east) -- ++(72pt,0) |- (read.east);
 
 \end{tikzpicture}
 \end{document}
