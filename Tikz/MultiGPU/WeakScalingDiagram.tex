@@ -1,0 +1,67 @@
+\documentclass[tikz,border=0pt]{standalone}
+\usepackage[portuguese,english]{babel}
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{siunitx}
+%\usepackage{csvsimple}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta, calc}
+%
+\begin{document}
+\begin{tikzpicture}[scale=1]
+%
+% Axis limits of the plot
+\def\xMin{1}
+\def\xMax{16}
+\def\yMin{0}
+\def\yMax{1}
+%
+% Make some nice colours available to use
+\definecolor{ApplePalette1}{RGB}{97, 187, 70}
+\definecolor{ApplePalette2}{RGB}{253, 184, 39}
+\definecolor{ApplePalette3}{RGB}{245, 130, 31}
+\definecolor{ApplePalette4}{RGB}{224, 58, 62}
+\definecolor{ApplePalette5}{RGB}{150, 61, 151}
+\definecolor{ApplePalette6}{RGB}{0, 157, 220}
+\definecolor{ApplePalette7}{RGB}{255, 105, 180}
+\definecolor{ApplePalette8}{RGB}{107, 194, 213}
+%
+\begin{axis}[
+    width = 0.85\textwidth,
+    height = 0.425\textwidth,
+    xmode = log,
+    log basis x=2,
+    clip = true,
+    domain = \xMin : \xMax,
+    xmin = \xMin,
+    xmax = \xMax,
+    ymin = \yMin,
+    ymax = \yMax,
+    axis lines = box,
+    axis line style = {-},
+    xtick = {1, 2, 4, 8, 16},
+    ytick = {0, 0.25, 0.5, 0.75, 1},
+    xticklabels = {1, 2, 4, 8, 16},
+    yticklabels = {0, 0.25, 0.5, 0.75, 1},
+    xlabel = {Nuber of GPUs},
+    ylabel = {Parallel efficiency},
+    xlabel style = {font=\normalsize, below},
+    ylabel style = {font=\normalsize, above, rotate=0},
+    tick label style = {font=\normalsize},
+    grid = both,
+    minor tick num = 8,
+    minor grid style = {dashed, gray!20},
+    samples = 100,
+    no marks,
+    legend pos = south east,
+    legend cell align = left
+]
+\addplot [black] {x}; \legend{Linear scaling}
+\addplot [black] {1/x}; \legend{Sub-linear scaling}
+%
+\end{axis}
+\path ($ (current axis.center) ! -1 ! (current bounding box.west |- current axis.center) $);
+\end{tikzpicture}
+\end{document}
